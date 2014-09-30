@@ -2,6 +2,8 @@
 
 namespace PPP\DataModel;
 
+use DataValues\StringValue;
+
 /**
  * @covers PPP\DataModel\TripleNode
  *
@@ -11,22 +13,22 @@ namespace PPP\DataModel;
 class TripleNodeTest extends \PHPUnit_Framework_TestCase {
 
 	public function testGetSubject() {
-		$tripleNode = new TripleNode('s', 'p', 'o');
-		$this->assertEquals('s', $tripleNode->getSubject());
+		$tripleNode = new TripleNode(new StringValue('s'), new StringValue('p'), new StringValue('o'));
+		$this->assertEquals(new StringValue('s'), $tripleNode->getSubject());
 	}
 
 	public function testGetPredicate() {
-		$tripleNode = new TripleNode('s', 'p', 'o');
-		$this->assertEquals('p', $tripleNode->getPredicate());
+		$tripleNode = new TripleNode(new StringValue('s'), new StringValue('p'), new StringValue('o'));
+		$this->assertEquals(new StringValue('p'), $tripleNode->getPredicate());
 	}
 
 	public function testGetObject() {
-		$tripleNode = new TripleNode('s', 'p', 'o');
-		$this->assertEquals('o', $tripleNode->getObject());
+		$tripleNode = new TripleNode(new StringValue('s'), new StringValue('p'), new StringValue('o'));
+		$this->assertEquals(new StringValue('o'), $tripleNode->getObject());
 	}
 
 	public function testGetType() {
-		$tripleNode = new TripleNode(null, null, null);
+		$tripleNode = new TripleNode(new StringValue('s'), new StringValue('p'), new StringValue('o'));
 		$this->assertEquals('triple', $tripleNode->getType());
 	}
 }

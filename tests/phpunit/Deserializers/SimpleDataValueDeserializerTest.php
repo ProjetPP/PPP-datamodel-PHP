@@ -2,22 +2,24 @@
 
 namespace PPP\DataModel\Deserializers;
 
+use DataValues\BooleanValue;
+use DataValues\NumberValue;
 use DataValues\StringValue;
-use PPP\DataModel\TripleNode;
+use DataValues\UnknownValue;
 
 /**
- * @covers PPP\DataModel\Deserializers\TripleNodeDeserializer
+ * @covers PPP\DataModel\Deserializers\SimpleDataValueDeserializer
  *
  * @licence MIT
  * @author Thomas Pellissier Tanon
  */
-class TripleNodeDeserializerTest extends DeserializerBaseTest {
+class SimpleDataValueDeserializerTest extends DeserializerBaseTest {
 
 	/**
 	 * @see DeserializerBaseTest::buildDeserializer
 	 */
 	public function buildDeserializer() {
-		return new TripleNodeDeserializer(new SimpleDataValueDeserializer());
+		return new SimpleDataValueDeserializer();
 	}
 
 	/**
@@ -26,12 +28,16 @@ class TripleNodeDeserializerTest extends DeserializerBaseTest {
 	public function deserializableProvider() {
 		return array(
 			array(
-				array(
-					'type' => 'triple',
-					'subject' => 's',
-					'predicate' => 'p',
-					'object' => 'o'
-				)
+				true
+			),
+			array(
+				42
+			),
+			array(
+				'test'
+			),
+			array(
+				null
 			)
 		);
 	}
@@ -42,12 +48,10 @@ class TripleNodeDeserializerTest extends DeserializerBaseTest {
 	public function nonDeserializableProvider() {
 		return array(
 			array(
-				42
+				array()
 			),
 			array(
-				array(
-					'type' => 'foo'
-				)
+				new StringValue('')
 			)
 		);
 	}
@@ -58,13 +62,24 @@ class TripleNodeDeserializerTest extends DeserializerBaseTest {
 	public function deserializationProvider() {
 		return array(
 			array(
-				new TripleNode(new StringValue('s'), new StringValue('p'), new StringValue('o')),
-				array(
-					'type' => 'triple',
-					'subject' => 's',
-					'predicate' => 'p',
-					'object' => 'o'
-				)
+				new BooleanValue(true),
+				true
+			),
+			array(
+				new NumberValue(42),
+				42
+			),
+			array(
+				new NumberValue(4.2),
+				4.2
+			),
+			array(
+				new StringValue('foo'),
+				'foo'
+			),
+			array(
+				new UnknownValue(null),
+				null
 			)
 		);
 	}
