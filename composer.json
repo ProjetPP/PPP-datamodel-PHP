@@ -15,7 +15,8 @@
 	],
 	"require": {
 		"php": ">=5.3.0",
-		"serialization/serialization": "3.*"
+		"serialization/serialization": "3.*",
+		"data-values/data-values": "1.*"
 	},
 	"autoload": {
 		"psr-4": {

@@ -2,6 +2,7 @@
 
 namespace PPP\DataModel\Deserializers;
 
+use Deserializers\Deserializer;
 use Deserializers\TypedObjectDeserializer;
 use PPP\DataModel\TripleNode;
 
@@ -11,7 +12,14 @@ use PPP\DataModel\TripleNode;
  */
 class TripleNodeDeserializer extends TypedObjectDeserializer {
 
-	public function __construct() {
+	/**
+	 * @var Deserializer
+	 */
+	private $dataValueDeserializer;
+
+	public function __construct($dataValueDeserializer) {
+		$this->dataValueDeserializer = $dataValueDeserializer;
+
 		parent::__construct('triple', 'type');
 	}
 
@@ -28,9 +36,9 @@ class TripleNodeDeserializer extends TypedObjectDeserializer {
 		$this->requireAttributes($serialization, 'subject', 'predicate', 'object');
 
 		return new TripleNode(
-			$serialization['subject'],
-			$serialization['predicate'],
-			$serialization['object']
+			$this->dataValueDeserializer->deserialize($serialization['subject']),
+			$this->dataValueDeserializer->deserialize($serialization['predicate']),
+			$this->dataValueDeserializer->deserialize($serialization['object'])
 		);
 	}
 }
