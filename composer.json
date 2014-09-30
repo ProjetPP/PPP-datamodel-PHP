@@ -1,5 +1,5 @@
 {
-	"name": "ppp/datamodel",
+	"name": "ppp/data-model",
 	"type": "library",
 	"description": "Internal representation of PPP objects in PHP",
 	"keywords": [
