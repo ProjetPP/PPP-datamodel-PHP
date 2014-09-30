@@ -17,7 +17,10 @@ class TripleNodeDeserializer extends TypedObjectDeserializer {
 	 */
 	private $dataValueDeserializer;
 
-	public function __construct($dataValueDeserializer) {
+	/**
+	 * @param Deserializer $dataValueDeserializer
+	 */
+	public function __construct(Deserializer $dataValueDeserializer) {
 		$this->dataValueDeserializer = $dataValueDeserializer;
 
 		parent::__construct('triple', 'type');
