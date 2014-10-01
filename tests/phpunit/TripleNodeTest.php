@@ -2,8 +2,6 @@
 
 namespace PPP\DataModel;
 
-use DataValues\StringValue;
-
 /**
  * @covers PPP\DataModel\TripleNode
  *
@@ -13,22 +11,22 @@ use DataValues\StringValue;
 class TripleNodeTest extends \PHPUnit_Framework_TestCase {
 
 	public function testGetSubject() {
-		$tripleNode = new TripleNode(new StringValue('s'), new StringValue('p'), new StringValue('o'));
-		$this->assertEquals(new StringValue('s'), $tripleNode->getSubject());
+		$tripleNode = new TripleNode(new ResourceNode('s'), new ResourceNode('p'), new ResourceNode('o'));
+		$this->assertEquals(new ResourceNode('s'), $tripleNode->getSubject());
 	}
 
 	public function testGetPredicate() {
-		$tripleNode = new TripleNode(new StringValue('s'), new StringValue('p'), new StringValue('o'));
-		$this->assertEquals(new StringValue('p'), $tripleNode->getPredicate());
+		$tripleNode = new TripleNode(new ResourceNode('s'), new ResourceNode('p'), new ResourceNode('o'));
+		$this->assertEquals(new ResourceNode('p'), $tripleNode->getPredicate());
 	}
 
 	public function testGetObject() {
-		$tripleNode = new TripleNode(new StringValue('s'), new StringValue('p'), new StringValue('o'));
-		$this->assertEquals(new StringValue('o'), $tripleNode->getObject());
+		$tripleNode = new TripleNode(new ResourceNode('s'), new ResourceNode('p'), new ResourceNode('o'));
+		$this->assertEquals(new ResourceNode('o'), $tripleNode->getObject());
 	}
 
 	public function testGetType() {
-		$tripleNode = new TripleNode(new StringValue('s'), new StringValue('p'), new StringValue('o'));
+		$tripleNode = new TripleNode(new ResourceNode('s'), new ResourceNode('p'), new ResourceNode('o'));
 		$this->assertEquals('triple', $tripleNode->getType());
 	}
 }
