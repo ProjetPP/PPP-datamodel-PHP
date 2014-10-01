@@ -2,9 +2,7 @@
 
 namespace PPP\DataModel\Deserializers;
 
-use DataValues\StringValue;
 use PPP\DataModel\MissingNode;
-use PPP\DataModel\TripleNode;
 
 /**
  * @covers PPP\DataModel\Deserializers\MissingNodeDeserializer

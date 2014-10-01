@@ -6,7 +6,6 @@ use Deserializers\Deserializer;
 use Deserializers\DispatchingDeserializer;
 use PPP\DataModel\Deserializers\MissingNodeDeserializer;
 use PPP\DataModel\Deserializers\ResourceNodeDeserializer;
-use PPP\DataModel\Deserializers\SimpleDataValueDeserializer;
 use PPP\DataModel\Deserializers\TripleNodeDeserializer;
 
 /**
