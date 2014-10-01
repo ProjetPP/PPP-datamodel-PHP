@@ -4,6 +4,7 @@ namespace PPP\DataModel;
 
 use Deserializers\Deserializer;
 use Deserializers\DispatchingDeserializer;
+use PPP\DataModel\Deserializers\MissingNodeDeserializer;
 use PPP\DataModel\Deserializers\SimpleDataValueDeserializer;
 use PPP\DataModel\Deserializers\TripleNodeDeserializer;
 
@@ -18,6 +19,7 @@ class DeserializerFactory {
 	 */
 	public function newNodeDeserializer() {
 		return new DispatchingDeserializer(array(
+			new MissingNodeDeserializer(),
 			new TripleNodeDeserializer(new SimpleDataValueDeserializer())
 		));
 	}
