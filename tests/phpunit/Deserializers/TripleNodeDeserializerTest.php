@@ -2,7 +2,8 @@
 
 namespace PPP\DataModel\Deserializers;
 
-use DataValues\StringValue;
+use PPP\DataModel\DeserializerFactory;
+use PPP\DataModel\ResourceNode;
 use PPP\DataModel\TripleNode;
 
 /**
@@ -17,7 +18,7 @@ class TripleNodeDeserializerTest extends DeserializerBaseTest {
 	 * @see DeserializerBaseTest::buildDeserializer
 	 */
 	public function buildDeserializer() {
-		return new TripleNodeDeserializer(new SimpleDataValueDeserializer());
+		return new TripleNodeDeserializer(new DeserializerFactory());
 	}
 
 	/**
@@ -28,9 +29,9 @@ class TripleNodeDeserializerTest extends DeserializerBaseTest {
 			array(
 				array(
 					'type' => 'triple',
-					'subject' => 's',
-					'predicate' => 'p',
-					'object' => 'o'
+					'subject' => array('type' => 'resource', 'value' => 's'),
+					'predicate' => array('type' => 'resource', 'value' => 'p'),
+					'object' => array('type' => 'resource', 'value' => 'o')
 				)
 			)
 		);
@@ -58,12 +59,12 @@ class TripleNodeDeserializerTest extends DeserializerBaseTest {
 	public function deserializationProvider() {
 		return array(
 			array(
-				new TripleNode(new StringValue('s'), new StringValue('p'), new StringValue('o')),
+				new TripleNode(new ResourceNode('s'), new ResourceNode('p'), new ResourceNode('o')),
 				array(
 					'type' => 'triple',
-					'subject' => 's',
-					'predicate' => 'p',
-					'object' => 'o'
+					'subject' => array('type' => 'resource', 'value' => 's'),
+					'predicate' => array('type' => 'resource', 'value' => 'p'),
+					'object' => array('type' => 'resource', 'value' => 'o')
 				)
 			)
 		);

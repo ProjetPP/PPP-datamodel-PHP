@@ -2,24 +2,21 @@
 
 namespace PPP\DataModel\Deserializers;
 
-use DataValues\BooleanValue;
-use DataValues\NumberValue;
-use DataValues\StringValue;
-use DataValues\UnknownValue;
+use PPP\DataModel\ResourceNode;
 
 /**
- * @covers PPP\DataModel\Deserializers\SimpleDataValueDeserializer
+ * @covers PPP\DataModel\Deserializers\ResourceNodeDeserializer
  *
  * @licence MIT
  * @author Thomas Pellissier Tanon
  */
-class SimpleDataValueDeserializerTest extends DeserializerBaseTest {
+class ResourceNodeDeserializerTest extends DeserializerBaseTest {
 
 	/**
 	 * @see DeserializerBaseTest::buildDeserializer
 	 */
 	public function buildDeserializer() {
-		return new SimpleDataValueDeserializer();
+		return new ResourceNodeDeserializer();
 	}
 
 	/**
@@ -28,16 +25,10 @@ class SimpleDataValueDeserializerTest extends DeserializerBaseTest {
 	public function deserializableProvider() {
 		return array(
 			array(
-				true
-			),
-			array(
-				42
-			),
-			array(
-				'test'
-			),
-			array(
-				null
+				array(
+					'type' => 'resource',
+					'value' => 'foo'
+				)
 			)
 		);
 	}
@@ -48,10 +39,12 @@ class SimpleDataValueDeserializerTest extends DeserializerBaseTest {
 	public function nonDeserializableProvider() {
 		return array(
 			array(
-				array()
+				42
 			),
 			array(
-				new StringValue('')
+				array(
+					'type' => 'foo'
+				)
 			)
 		);
 	}
@@ -62,24 +55,11 @@ class SimpleDataValueDeserializerTest extends DeserializerBaseTest {
 	public function deserializationProvider() {
 		return array(
 			array(
-				new BooleanValue(true),
-				true
-			),
-			array(
-				new NumberValue(42),
-				42
-			),
-			array(
-				new NumberValue(4.2),
-				4.2
-			),
-			array(
-				new StringValue('foo'),
-				'foo'
-			),
-			array(
-				new UnknownValue(null),
-				null
+				new ResourceNode('foo'),
+				array(
+					'type' => 'resource',
+					'value' => 'foo'
+				)
 			)
 		);
 	}

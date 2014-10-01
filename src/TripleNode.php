@@ -1,9 +1,6 @@
 <?php
 
 namespace PPP\DataModel;
-
-use DataValues\DataValue;
-
 /**
  * A (subject, predicate, object) triple.
  *
@@ -13,47 +10,47 @@ use DataValues\DataValue;
 class TripleNode extends AbstractNode {
 
 	/**
-	 * @var DataValue
+	 * @var ResourceNode
 	 */
 	private $subject;
 
 	/**
-	 * @var DataValue
+	 * @var ResourceNode
 	 */
 	private $predicate;
 
 	/**
-	 * @var DataValue
+	 * @var ResourceNode
 	 */
 	private $object;
 
 	/**
-	 * @param DataValue $subject
-	 * @param DataValue $predicate
-	 * @param DataValue $object
+	 * @param ResourceNode $subject
+	 * @param ResourceNode $predicate
+	 * @param ResourceNode $object
 	 */
-	public function __construct(DataValue $subject, DataValue $predicate, DataValue $object) {
+	public function __construct(ResourceNode $subject, ResourceNode $predicate, ResourceNode $object) {
 		$this->subject = $subject;
 		$this->predicate = $predicate;
 		$this->object = $object;
 	}
 
 	/**
-	 * @return DataValue
+	 * @return ResourceNode
 	 */
 	public function getSubject() {
 		return $this->subject;
 	}
 
 	/**
-	 * @return DataValue
+	 * @return ResourceNode
 	 */
 	public function getPredicate() {
 		return $this->predicate;
 	}
 
 	/**
-	 * @return DataValue
+	 * @return ResourceNode
 	 */
 	public function getObject() {
 		return $this->object;
