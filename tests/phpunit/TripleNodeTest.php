@@ -11,22 +11,22 @@ namespace PPP\DataModel;
 class TripleNodeTest extends \PHPUnit_Framework_TestCase {
 
 	public function testGetSubject() {
-		$tripleNode = new TripleNode(new ResourceNode('s'), new ResourceNode('p'), new ResourceNode('o'));
+		$tripleNode = new TripleNode(new ResourceNode('s'), new ResourceNode('p'), new MissingNode());
 		$this->assertEquals(new ResourceNode('s'), $tripleNode->getSubject());
 	}
 
 	public function testGetPredicate() {
-		$tripleNode = new TripleNode(new ResourceNode('s'), new ResourceNode('p'), new ResourceNode('o'));
+		$tripleNode = new TripleNode(new ResourceNode('s'), new ResourceNode('p'), new MissingNode());
 		$this->assertEquals(new ResourceNode('p'), $tripleNode->getPredicate());
 	}
 
 	public function testGetObject() {
-		$tripleNode = new TripleNode(new ResourceNode('s'), new ResourceNode('p'), new ResourceNode('o'));
-		$this->assertEquals(new ResourceNode('o'), $tripleNode->getObject());
+		$tripleNode = new TripleNode(new ResourceNode('s'), new ResourceNode('p'), new MissingNode());
+		$this->assertEquals(new MissingNode(), $tripleNode->getObject());
 	}
 
 	public function testGetType() {
-		$tripleNode = new TripleNode(new ResourceNode('s'), new ResourceNode('p'), new ResourceNode('o'));
+		$tripleNode = new TripleNode(new ResourceNode('s'), new ResourceNode('p'), new MissingNode());
 		$this->assertEquals('triple', $tripleNode->getType());
 	}
 }
