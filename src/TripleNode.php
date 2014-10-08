@@ -10,47 +10,47 @@ namespace PPP\DataModel;
 class TripleNode extends AbstractNode {
 
 	/**
-	 * @var ResourceNode
+	 * @var AbstractNode
 	 */
 	private $subject;
 
 	/**
-	 * @var ResourceNode
+	 * @var AbstractNode
 	 */
 	private $predicate;
 
 	/**
-	 * @var ResourceNode
+	 * @var AbstractNode
 	 */
 	private $object;
 
 	/**
-	 * @param ResourceNode $subject
-	 * @param ResourceNode $predicate
-	 * @param ResourceNode $object
+	 * @param AbstractNode $subject
+	 * @param AbstractNode $predicate
+	 * @param AbstractNode $object
 	 */
-	public function __construct(ResourceNode $subject, ResourceNode $predicate, ResourceNode $object) {
+	public function __construct(AbstractNode $subject, AbstractNode $predicate, AbstractNode $object) {
 		$this->subject = $subject;
 		$this->predicate = $predicate;
 		$this->object = $object;
 	}
 
 	/**
-	 * @return ResourceNode
+	 * @return AbstractNode
 	 */
 	public function getSubject() {
 		return $this->subject;
 	}
 
 	/**
-	 * @return ResourceNode
+	 * @return AbstractNode
 	 */
 	public function getPredicate() {
 		return $this->predicate;
 	}
 
 	/**
-	 * @return ResourceNode
+	 * @return AbstractNode
 	 */
 	public function getObject() {
 		return $this->object;
