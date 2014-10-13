@@ -6,7 +6,7 @@ use PPP\DataModel\MissingNode;
 use PPP\DataModel\ResourceNode;
 
 /**
- * @covers Wikibase\DataModel\Serializers\SiteLinkSerializer
+ * @covers PPP\DataModel\Serializers\MissingNodeSerializer
  *
  * @licence GNU GPL v2+
  * @author Thomas Pellissier Tanon
