@@ -12,6 +12,14 @@ class DeserializerFactoryTest extends \PHPUnit_Framework_TestCase {
 
 	public function testNewNodeDeserializer() {
 		$factory = new DeserializerFactory();
-		$this->assertInstanceOf( 'Deserializers\Deserializer', $factory->newNodeDeserializer());
+		$this->assertEquals(
+			new TripleNode(new ResourceNode('s'), new ResourceNode('p'), new MissingNode()),
+			$factory->newNodeDeserializer()->deserialize(array(
+				'type' => 'triple',
+				'subject' => array('type' => 'resource', 'value' => 's'),
+				'predicate' => array('type' => 'resource', 'value' => 'p'),
+				'object' => array('type' => 'missing')
+			))
+		);
 	}
 }
