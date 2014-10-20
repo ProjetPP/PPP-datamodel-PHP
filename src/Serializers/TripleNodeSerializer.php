@@ -15,15 +15,15 @@ use Serializers\Serializer;
 class TripleNodeSerializer implements DispatchableSerializer {
 
 	/**
-	 * @var Serializer
+	 * @var SerializerFactory
 	 */
-	private $nodeSerializer;
+	private $serializerFactory;
 
 	/**
-	 * @param SerializerFactory $deserializerFactory
+	 * @param SerializerFactory $serializerFactory
 	 */
-	public function __construct(SerializerFactory $deserializerFactory) {
-		$this->nodeSerializer = $deserializerFactory->newNodeSerializer();
+	public function __construct(SerializerFactory $serializerFactory) {
+		$this->serializerFactory = $serializerFactory;
 	}
 
 	
@@ -46,11 +46,12 @@ class TripleNodeSerializer implements DispatchableSerializer {
 	}
 
 	private function getSerialization(TripleNode $node) {
+		$nodeSerializer = $this->serializerFactory->newNodeSerializer();
 		return array(
 			'type' => 'triple',
-			'subject' => $this->nodeSerializer->serialize($node->getSubject()),
-			'predicate' => $this->nodeSerializer->serialize($node->getPredicate()),
-			'object' => $this->nodeSerializer->serialize($node->getObject())
+			'subject' => $nodeSerializer->serialize($node->getSubject()),
+			'predicate' => $nodeSerializer->serialize($node->getPredicate()),
+			'object' => $nodeSerializer->serialize($node->getObject())
 		);
 	}
 }
