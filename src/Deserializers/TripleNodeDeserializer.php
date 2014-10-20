@@ -14,15 +14,15 @@ use PPP\DataModel\TripleNode;
 class TripleNodeDeserializer extends TypedObjectDeserializer {
 
 	/**
-	 * @var Deserializer
+	 * @var DeserializerFactory
 	 */
-	private $nodeDeserializer;
+	private $deserializerFactory;
 
 	/**
 	 * @param DeserializerFactory $deserializerFactory
 	 */
 	public function __construct(DeserializerFactory $deserializerFactory) {
-		$this->nodeDeserializer = $deserializerFactory->newNodeDeserializer();
+		$this->deserializerFactory = $deserializerFactory;
 
 		parent::__construct('triple', 'type');
 	}
@@ -39,10 +39,11 @@ class TripleNodeDeserializer extends TypedObjectDeserializer {
 	private function getDeserialization(array $serialization) {
 		$this->requireAttributes($serialization, 'subject', 'predicate', 'object');
 
+		$nodeDeserializer = $this->deserializerFactory->newNodeDeserializer();
 		return new TripleNode(
-			$this->nodeDeserializer->deserialize($serialization['subject']),
-			$this->nodeDeserializer->deserialize($serialization['predicate']),
-			$this->nodeDeserializer->deserialize($serialization['object'])
+			$nodeDeserializer->deserialize($serialization['subject']),
+			$nodeDeserializer->deserialize($serialization['predicate']),
+			$nodeDeserializer->deserialize($serialization['object'])
 		);
 	}
 }
