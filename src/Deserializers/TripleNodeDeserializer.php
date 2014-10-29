@@ -2,7 +2,6 @@
 
 namespace PPP\DataModel\Deserializers;
 
-use Deserializers\Deserializer;
 use Deserializers\TypedObjectDeserializer;
 use PPP\DataModel\DeserializerFactory;
 use PPP\DataModel\TripleNode;

@@ -8,7 +8,7 @@ namespace PPP\DataModel;
  * @licence MIT
  * @author Thomas Pellissier Tanon
  */
-class DerializerFactoryTest extends \PHPUnit_Framework_TestCase {
+class SerializerFactoryTest extends \PHPUnit_Framework_TestCase {
 
 	public function testNewNodeSerializer() {
 		$factory = new SerializerFactory();

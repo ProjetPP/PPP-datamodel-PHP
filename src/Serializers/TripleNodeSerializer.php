@@ -6,7 +6,6 @@ use PPP\DataModel\SerializerFactory;
 use PPP\DataModel\TripleNode;
 use Serializers\DispatchableSerializer;
 use Serializers\Exceptions\UnsupportedObjectException;
-use Serializers\Serializer;
 
 /**
  * @licence MIT
