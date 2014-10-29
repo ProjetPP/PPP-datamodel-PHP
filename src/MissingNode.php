@@ -16,4 +16,11 @@ class MissingNode extends AbstractNode {
 	public function getType() {
 		return 'missing';
 	}
+
+	/**
+	 * @see AbstractNode::equals
+	 */
+	public function equals($target) {
+		return $target instanceof self;
+	}
 }

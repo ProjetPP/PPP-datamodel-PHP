@@ -14,4 +14,14 @@ class MissingNodeTest extends \PHPUnit_Framework_TestCase {
 		$node = new MissingNode();
 		$this->assertEquals('missing', $node->getType());
 	}
+
+	public function testEquals() {
+		$node = new MissingNode();
+		$this->assertTrue($node->equals(new MissingNode()));
+	}
+
+	public function testNonEquals() {
+		$node = new MissingNode();
+		$this->assertFalse($node->equals(2));
+	}
 }

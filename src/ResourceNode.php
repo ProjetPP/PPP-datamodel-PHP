@@ -35,4 +35,12 @@ class ResourceNode extends AbstractNode {
 	public function getType() {
 		return 'resource';
 	}
+
+	/**
+	 * @see AbstractNode::equals
+	 */
+	public function equals($target) {
+		return $target instanceof self &&
+			$this->value === $target->value;
+	}
 }

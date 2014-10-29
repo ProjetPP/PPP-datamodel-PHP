@@ -62,4 +62,14 @@ class TripleNode extends AbstractNode {
 	public function getType() {
 		return 'triple';
 	}
+
+	/**
+	 * @see AbstractNode::equals
+	 */
+	public function equals($target) {
+		return $target instanceof self &&
+			$this->subject->equals($target->subject) &&
+			$this->predicate->equals($target->predicate) &&
+			$this->object->equals($target->object);
+	}
 }
