@@ -16,11 +16,11 @@ class SerializerFactoryTest extends \PHPUnit_Framework_TestCase {
 			array(
 				'type' => 'triple',
 				'subject' => array('type' => 'resource', 'value' => 's'),
-				'predicate' => array('type' => 'resource', 'value' => 'p'),
+				'predicate' => array('type' => 'sentence', 'value' => 'p'),
 				'object' => array('type' => 'missing')
 			),
 			$factory->newNodeSerializer()->serialize(
-				new TripleNode(new ResourceNode('s'), new ResourceNode('p'), new MissingNode())
+				new TripleNode(new ResourceNode('s'), new SentenceNode('p'), new MissingNode())
 			)
 		);
 	}
