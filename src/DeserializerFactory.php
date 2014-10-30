@@ -6,6 +6,7 @@ use Deserializers\Deserializer;
 use Deserializers\DispatchingDeserializer;
 use PPP\DataModel\Deserializers\MissingNodeDeserializer;
 use PPP\DataModel\Deserializers\ResourceNodeDeserializer;
+use PPP\DataModel\Deserializers\SentenceNodeDeserializer;
 use PPP\DataModel\Deserializers\TripleNodeDeserializer;
 
 /**
@@ -27,7 +28,8 @@ class DeserializerFactory {
 		return new DispatchingDeserializer(array(
 			new MissingNodeDeserializer(),
 			new ResourceNodeDeserializer(),
-			new TripleNodeDeserializer($this)
+			new TripleNodeDeserializer($this),
+			new SentenceNodeDeserializer()
 		));
 	}
 
