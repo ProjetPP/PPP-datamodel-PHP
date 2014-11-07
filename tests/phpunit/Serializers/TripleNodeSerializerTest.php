@@ -5,6 +5,7 @@ namespace PPP\DataModel\Serializers;
 use PPP\DataModel\MissingNode;
 use PPP\DataModel\ResourceNode;
 use PPP\DataModel\SerializerFactory;
+use PPP\DataModel\StringResourceNode;
 use PPP\DataModel\TripleNode;
 
 /**
@@ -55,11 +56,11 @@ class TripleNodeSerializerTest extends SerializerBaseTest {
 			array(
 				array(
 					'type' => 'triple',
-					'subject' => array('type' => 'resource', 'value' => 's'),
-					'predicate' => array('type' => 'resource', 'value' => 'p'),
-					'object' => array('type' => 'resource', 'value' => 'o')
+					'subject' => array('type' => 'resource', 'value' => 's', 'value-type' => 'string'),
+					'predicate' => array('type' => 'resource', 'value' => 'p', 'value-type' => 'string'),
+					'object' => array('type' => 'resource', 'value' => 'o', 'value-type' => 'string')
 				),
-				new TripleNode(new ResourceNode('s'), new ResourceNode('p'), new ResourceNode('o'))
+				new TripleNode(new StringResourceNode('s'), new StringResourceNode('p'), new StringResourceNode('o'))
 			)
 		);
 	}

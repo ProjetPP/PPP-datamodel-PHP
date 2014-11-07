@@ -3,36 +3,36 @@
 namespace PPP\DataModel;
 
 /**
- * @covers PPP\DataModel\ResourceNode
+ * @covers PPP\DataModel\StringResourceNode
  *
  * @licence MIT
  * @author Thomas Pellissier Tanon
  */
-class ResourceNodeTest extends \PHPUnit_Framework_TestCase {
+class StringResourceNodeTest extends \PHPUnit_Framework_TestCase {
 
 	public function testGetValue() {
-		$node = new ResourceNode('foo');
+		$node = new StringResourceNode('foo');
 		$this->assertEquals('foo', $node->getValue());
 	}
 
-	public function testGetValueType() {
-		$node = new ResourceNode('1', 'boolean');
-		$this->assertEquals('boolean', $node->getValueType());
+	public function testGetLanguageCode() {
+		$node = new StringResourceNode('foo', 'fr');
+		$this->assertEquals('fr', $node->getLanguageCode());
 	}
 
-	public function testGetDefaultValueType() {
-		$node = new ResourceNode('foo');
+	public function testGetValueType() {
+		$node = new StringResourceNode('foo');
 		$this->assertEquals('string', $node->getValueType());
 	}
 
 	public function testGetType() {
-		$node = new ResourceNode('foo');
+		$node = new StringResourceNode('foo');
 		$this->assertEquals('resource', $node->getType());
 	}
 
 	public function testEquals() {
-		$node = new ResourceNode('a');
-		$this->assertTrue($node->equals(new ResourceNode('a')));
+		$node = new StringResourceNode('a');
+		$this->assertTrue($node->equals(new StringResourceNode('a')));
 	}
 
 	/**
@@ -45,12 +45,12 @@ class ResourceNodeTest extends \PHPUnit_Framework_TestCase {
 	public function nonEqualsProvider() {
 		return array(
 			array(
-				new ResourceNode('a'),
+				new StringResourceNode('a'),
 				new MissingNode()
 			),
 			array(
-				new ResourceNode('a'),
-				new ResourceNode('b')
+				new StringResourceNode('a'),
+				new StringResourceNode('b')
 			),
 		);
 	}

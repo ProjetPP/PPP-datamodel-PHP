@@ -3,20 +3,21 @@
 namespace PPP\DataModel\Deserializers;
 
 use PPP\DataModel\ResourceNode;
+use PPP\DataModel\StringResourceNode;
 
 /**
- * @covers PPP\DataModel\Deserializers\ResourceNodeDeserializer
+ * @covers PPP\DataModel\Deserializers\StringResourceNodeDeserializer
  *
  * @licence MIT
  * @author Thomas Pellissier Tanon
  */
-class ResourceNodeDeserializerTest extends DeserializerBaseTest {
+class StringResourceNodeDeserializerTest extends DeserializerBaseTest {
 
 	/**
 	 * @see DeserializerBaseTest::buildDeserializer
 	 */
 	public function buildDeserializer() {
-		return new ResourceNodeDeserializer();
+		return new StringResourceNodeDeserializer();
 	}
 
 	/**
@@ -27,6 +28,11 @@ class ResourceNodeDeserializerTest extends DeserializerBaseTest {
 			array(
 				array(
 					'type' => 'resource',
+					'value' => 'foo'
+				),
+				array(
+					'type' => 'resource',
+					'value-type' => 'string',
 					'value' => 'foo'
 				)
 			)
@@ -45,6 +51,13 @@ class ResourceNodeDeserializerTest extends DeserializerBaseTest {
 				array(
 					'type' => 'foo'
 				)
+			),
+			array(
+				array(
+					'type' => 'foo',
+					'value-type' => 'boolean',
+					'value' => 'true'
+				)
 			)
 		);
 	}
@@ -55,10 +68,20 @@ class ResourceNodeDeserializerTest extends DeserializerBaseTest {
 	public function deserializationProvider() {
 		return array(
 			array(
-				new ResourceNode('foo'),
+				new StringResourceNode('foo'),
 				array(
 					'type' => 'resource',
+					'value-type' => 'string',
 					'value' => 'foo'
+				)
+			),
+			array(
+				new StringResourceNode('foo', 'en'),
+				array(
+					'type' => 'resource',
+					'value-type' => 'string',
+					'value' => 'foo',
+					'language' => 'en'
 				)
 			)
 		);

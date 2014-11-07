@@ -4,6 +4,7 @@ namespace PPP\DataModel\Deserializers;
 
 use PPP\DataModel\DeserializerFactory;
 use PPP\DataModel\ResourceNode;
+use PPP\DataModel\StringResourceNode;
 use PPP\DataModel\TripleNode;
 
 /**
@@ -59,7 +60,7 @@ class TripleNodeDeserializerTest extends DeserializerBaseTest {
 	public function deserializationProvider() {
 		return array(
 			array(
-				new TripleNode(new ResourceNode('s'), new ResourceNode('p'), new ResourceNode('o')),
+				new TripleNode(new StringResourceNode('s'), new StringResourceNode('p'), new StringResourceNode('o')),
 				array(
 					'type' => 'triple',
 					'subject' => array('type' => 'resource', 'value' => 's'),

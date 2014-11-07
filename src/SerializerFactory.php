@@ -3,8 +3,9 @@
 namespace PPP\DataModel;
 
 use PPP\DataModel\Serializers\MissingNodeSerializer;
-use PPP\DataModel\Serializers\ResourceNodeSerializer;
+use PPP\DataModel\Serializers\BasicResourceNodeSerializer;
 use PPP\DataModel\Serializers\SentenceNodeSerializer;
+use PPP\DataModel\Serializers\StringResourceNodeSerializer;
 use PPP\DataModel\Serializers\TripleNodeSerializer;
 use Serializers\DispatchingSerializer;
 use Serializers\Serializer;
@@ -27,7 +28,7 @@ class SerializerFactory {
 	private function buildNodeSerializer() {
 		return new DispatchingSerializer(array(
 			new MissingNodeSerializer(),
-			new ResourceNodeSerializer(),
+			new StringResourceNodeSerializer(),
 			new TripleNodeSerializer($this),
 			new SentenceNodeSerializer()
 		));

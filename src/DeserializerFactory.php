@@ -5,8 +5,9 @@ namespace PPP\DataModel;
 use Deserializers\Deserializer;
 use Deserializers\DispatchingDeserializer;
 use PPP\DataModel\Deserializers\MissingNodeDeserializer;
-use PPP\DataModel\Deserializers\ResourceNodeDeserializer;
+use PPP\DataModel\Deserializers\AbstractResourceNodeDeserializer;
 use PPP\DataModel\Deserializers\SentenceNodeDeserializer;
+use PPP\DataModel\Deserializers\StringResourceNodeDeserializer;
 use PPP\DataModel\Deserializers\TripleNodeDeserializer;
 
 /**
@@ -27,7 +28,7 @@ class DeserializerFactory {
 	private function buildNodeDeserializer() {
 		return new DispatchingDeserializer(array(
 			new MissingNodeDeserializer(),
-			new ResourceNodeDeserializer(),
+			new StringResourceNodeDeserializer(),
 			new TripleNodeDeserializer($this),
 			new SentenceNodeDeserializer()
 		));
