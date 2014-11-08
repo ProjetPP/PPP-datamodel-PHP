@@ -3,7 +3,6 @@
 namespace PPP\DataModel\Deserializers;
 
 use PPP\DataModel\DeserializerFactory;
-use PPP\DataModel\ResourceNode;
 use PPP\DataModel\StringResourceNode;
 use PPP\DataModel\TripleNode;
 

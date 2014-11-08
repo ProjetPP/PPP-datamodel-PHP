@@ -3,7 +3,6 @@
 namespace PPP\DataModel\Serializers;
 
 use PPP\DataModel\MissingNode;
-use PPP\DataModel\ResourceNode;
 use PPP\DataModel\StringResourceNode;
 
 /**

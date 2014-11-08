@@ -2,7 +2,6 @@
 
 namespace PPP\DataModel\Deserializers;
 
-use PPP\DataModel\ResourceNode;
 use PPP\DataModel\StringResourceNode;
 
 /**

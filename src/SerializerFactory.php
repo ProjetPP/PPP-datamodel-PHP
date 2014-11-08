@@ -2,8 +2,8 @@
 
 namespace PPP\DataModel;
 
-use PPP\DataModel\Serializers\MissingNodeSerializer;
 use PPP\DataModel\Serializers\BasicResourceNodeSerializer;
+use PPP\DataModel\Serializers\MissingNodeSerializer;
 use PPP\DataModel\Serializers\SentenceNodeSerializer;
 use PPP\DataModel\Serializers\StringResourceNodeSerializer;
 use PPP\DataModel\Serializers\TripleNodeSerializer;

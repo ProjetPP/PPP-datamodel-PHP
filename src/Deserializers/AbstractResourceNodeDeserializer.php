@@ -2,7 +2,6 @@
 
 namespace PPP\DataModel\Deserializers;
 
-use Deserializers\Exceptions\MissingTypeException;
 use Deserializers\Exceptions\UnsupportedTypeException;
 use Deserializers\TypedObjectDeserializer;
 use PPP\DataModel\ResourceNode;
