@@ -29,6 +29,7 @@ class SerializerFactory {
 		return new DispatchingSerializer(array(
 			new MissingNodeSerializer(),
 			new StringResourceNodeSerializer(),
+			new BasicResourceNodeSerializer('boolean'),
 			new TripleNodeSerializer($this),
 			new SentenceNodeSerializer()
 		));
