@@ -2,24 +2,23 @@
 
 namespace PPP\DataModel\Serializers;
 
+use PPP\DataModel\BooleanResourceNode;
 use PPP\DataModel\MissingNode;
-use PPP\DataModel\SerializerFactory;
 use PPP\DataModel\StringResourceNode;
-use PPP\DataModel\TripleNode;
 
 /**
- * @covers PPP\DataModel\Serializers\TripleNodeSerializer
+ * @covers PPP\DataModel\Serializers\BasicResourceNodeSerializer
  *
  * @licence MIT
  * @author Thomas Pellissier Tanon
  */
-class TripleNodeSerializerTest extends SerializerBaseTest {
+class BasicResourceNodeSerializerTest extends SerializerBaseTest {
 
 	/**
 	 * @see SerializerBaseTest::buildSerializer
 	 */
 	public function buildSerializer() {
-		return new TripleNodeSerializer(new SerializerFactory());
+		return new BasicResourceNodeSerializer('boolean');
 	}
 
 	/**
@@ -28,7 +27,7 @@ class TripleNodeSerializerTest extends SerializerBaseTest {
 	public function serializableProvider() {
 		return array(
 			array(
-				new TripleNode(new MissingNode(), new MissingNode(), new MissingNode())
+				new BooleanResourceNode('true')
 			)
 		);
 	}
@@ -43,6 +42,9 @@ class TripleNodeSerializerTest extends SerializerBaseTest {
 			),
 			array(
 				new MissingNode()
+			),
+			array(
+				new StringResourceNode('foo')
 			)
 		);
 	}
@@ -54,13 +56,12 @@ class TripleNodeSerializerTest extends SerializerBaseTest {
 		return array(
 			array(
 				array(
-					'type' => 'triple',
-					'subject' => array('type' => 'resource', 'value' => 's', 'value-type' => 'string'),
-					'predicate' => array('type' => 'resource', 'value' => 'p', 'value-type' => 'string'),
-					'object' => array('type' => 'resource', 'value' => 'o', 'value-type' => 'string')
+					'type' => 'resource',
+					'value' => 'true',
+					'value-type' => 'boolean'
 				),
-				new TripleNode(new StringResourceNode('s'), new StringResourceNode('p'), new StringResourceNode('o'))
-			)
+				new BooleanResourceNode('true')
+			),
 		);
 	}
 }

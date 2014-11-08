@@ -10,13 +10,25 @@ use Serializers\Exceptions\UnsupportedObjectException;
  * @licence MIT
  * @author Thomas Pellissier Tanon
  */
-class ResourceNodeSerializer implements DispatchableSerializer {
+class BasicResourceNodeSerializer implements DispatchableSerializer {
+
+	/**
+	 * @var string
+	 */
+	private $valueType;
+
+	/**
+	 * @param $valueType
+	 */
+	public function __construct($valueType) {
+		$this->valueType = $valueType;
+	}
 
 	/**
 	 * @see DispatchableSerializer::isSerializerFor
 	 */
 	public function isSerializerFor($object) {
-		return is_object($object) && $object instanceof ResourceNode;
+		return is_object($object) && $object instanceof ResourceNode && $object->getValueType() === $this->valueType;
 	}
 
 	/**
@@ -33,7 +45,17 @@ class ResourceNodeSerializer implements DispatchableSerializer {
 	private function getSerialization(ResourceNode $node) {
 		return array(
 			'type' => 'resource',
-			'value' => $node->getValue()
-		);
+			'value' => $node->getValue(),
+			'value-type' => $node->getValueType()
+		) + $this->getAdditionalSerialization($node);
+	}
+
+	/**
+	 * Should be use to add extra information to the serialization
+	 * @param ResourceNode $node
+	 * @return array
+	 */
+	protected function getAdditionalSerialization(ResourceNode $node) {
+		return array();
 	}
 }

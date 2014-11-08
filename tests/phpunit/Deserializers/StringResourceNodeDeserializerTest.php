@@ -2,23 +2,21 @@
 
 namespace PPP\DataModel\Deserializers;
 
-use PPP\DataModel\DeserializerFactory;
 use PPP\DataModel\StringResourceNode;
-use PPP\DataModel\TripleNode;
 
 /**
- * @covers PPP\DataModel\Deserializers\TripleNodeDeserializer
+ * @covers PPP\DataModel\Deserializers\StringResourceNodeDeserializer
  *
  * @licence MIT
  * @author Thomas Pellissier Tanon
  */
-class TripleNodeDeserializerTest extends DeserializerBaseTest {
+class StringResourceNodeDeserializerTest extends DeserializerBaseTest {
 
 	/**
 	 * @see DeserializerBaseTest::buildDeserializer
 	 */
 	public function buildDeserializer() {
-		return new TripleNodeDeserializer(new DeserializerFactory());
+		return new StringResourceNodeDeserializer();
 	}
 
 	/**
@@ -28,10 +26,13 @@ class TripleNodeDeserializerTest extends DeserializerBaseTest {
 		return array(
 			array(
 				array(
-					'type' => 'triple',
-					'subject' => array('type' => 'resource', 'value' => 's'),
-					'predicate' => array('type' => 'resource', 'value' => 'p'),
-					'object' => array('type' => 'resource', 'value' => 'o')
+					'type' => 'resource',
+					'value' => 'foo'
+				),
+				array(
+					'type' => 'resource',
+					'value-type' => 'string',
+					'value' => 'foo'
 				)
 			)
 		);
@@ -49,6 +50,13 @@ class TripleNodeDeserializerTest extends DeserializerBaseTest {
 				array(
 					'type' => 'foo'
 				)
+			),
+			array(
+				array(
+					'type' => 'resource',
+					'value-type' => 'boolean',
+					'value' => 'true'
+				)
 			)
 		);
 	}
@@ -59,12 +67,20 @@ class TripleNodeDeserializerTest extends DeserializerBaseTest {
 	public function deserializationProvider() {
 		return array(
 			array(
-				new TripleNode(new StringResourceNode('s'), new StringResourceNode('p'), new StringResourceNode('o')),
+				new StringResourceNode('foo'),
 				array(
-					'type' => 'triple',
-					'subject' => array('type' => 'resource', 'value' => 's'),
-					'predicate' => array('type' => 'resource', 'value' => 'p'),
-					'object' => array('type' => 'resource', 'value' => 'o')
+					'type' => 'resource',
+					'value-type' => 'string',
+					'value' => 'foo'
+				)
+			),
+			array(
+				new StringResourceNode('foo', 'en'),
+				array(
+					'type' => 'resource',
+					'value-type' => 'string',
+					'value' => 'foo',
+					'language' => 'en'
 				)
 			)
 		);

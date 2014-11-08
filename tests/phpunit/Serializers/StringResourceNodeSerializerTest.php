@@ -2,22 +2,23 @@
 
 namespace PPP\DataModel\Serializers;
 
+use PPP\DataModel\BooleanResourceNode;
 use PPP\DataModel\MissingNode;
-use PPP\DataModel\ResourceNode;
+use PPP\DataModel\StringResourceNode;
 
 /**
- * @covers PPP\DataModel\Serializers\ResourceNodeSerializer
+ * @covers PPP\DataModel\Serializers\StringResourceNodeSerializer
  *
  * @licence MIT
  * @author Thomas Pellissier Tanon
  */
-class ResourceNodeSerializerTest extends SerializerBaseTest {
+class StringResourceNodeSerializerTest extends SerializerBaseTest {
 
 	/**
 	 * @see SerializerBaseTest::buildSerializer
 	 */
 	public function buildSerializer() {
-		return new ResourceNodeSerializer();
+		return new StringResourceNodeSerializer();
 	}
 
 	/**
@@ -26,7 +27,7 @@ class ResourceNodeSerializerTest extends SerializerBaseTest {
 	public function serializableProvider() {
 		return array(
 			array(
-				new ResourceNode('foo')
+				new StringResourceNode('foo')
 			)
 		);
 	}
@@ -41,6 +42,9 @@ class ResourceNodeSerializerTest extends SerializerBaseTest {
 			),
 			array(
 				new MissingNode()
+			),
+			array(
+				new BooleanResourceNode('true')
 			)
 		);
 	}
@@ -53,9 +57,19 @@ class ResourceNodeSerializerTest extends SerializerBaseTest {
 			array(
 				array(
 					'type' => 'resource',
-					'value' => 'foo'
+					'value' => 'foo',
+					'value-type' => 'string'
 				),
-				new ResourceNode('foo')
+				new StringResourceNode('foo')
+			),
+			array(
+				array(
+					'type' => 'resource',
+					'value' => 'foo',
+					'value-type' => 'string',
+					'language' => 'fr'
+				),
+				new StringResourceNode('foo', 'fr')
 			)
 		);
 	}

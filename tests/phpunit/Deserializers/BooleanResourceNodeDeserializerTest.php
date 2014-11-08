@@ -2,21 +2,21 @@
 
 namespace PPP\DataModel\Deserializers;
 
-use PPP\DataModel\ResourceNode;
+use PPP\DataModel\BooleanResourceNode;
 
 /**
- * @covers PPP\DataModel\Deserializers\ResourceNodeDeserializer
+ * @covers PPP\DataModel\Deserializers\BooleanResourceNodeDeserializer
  *
  * @licence MIT
  * @author Thomas Pellissier Tanon
  */
-class ResourceNodeDeserializerTest extends DeserializerBaseTest {
+class BooleanResourceNodeDeserializerTest extends DeserializerBaseTest {
 
 	/**
 	 * @see DeserializerBaseTest::buildDeserializer
 	 */
 	public function buildDeserializer() {
-		return new ResourceNodeDeserializer();
+		return new BooleanResourceNodeDeserializer();
 	}
 
 	/**
@@ -27,8 +27,9 @@ class ResourceNodeDeserializerTest extends DeserializerBaseTest {
 			array(
 				array(
 					'type' => 'resource',
-					'value' => 'foo'
-				)
+					'value-type' => 'boolean',
+					'value' => 'true'
+				),
 			)
 		);
 	}
@@ -43,7 +44,14 @@ class ResourceNodeDeserializerTest extends DeserializerBaseTest {
 			),
 			array(
 				array(
-					'type' => 'foo'
+					'type' => 'true'
+				)
+			),
+			array(
+				array(
+					'type' => 'true',
+					'value-type' => 'boolean',
+					'value' => 'true'
 				)
 			)
 		);
@@ -55,12 +63,13 @@ class ResourceNodeDeserializerTest extends DeserializerBaseTest {
 	public function deserializationProvider() {
 		return array(
 			array(
-				new ResourceNode('foo'),
+				new BooleanResourceNode('true'),
 				array(
 					'type' => 'resource',
-					'value' => 'foo'
+					'value-type' => 'boolean',
+					'value' => 'true'
 				)
-			)
+			),
 		);
 	}
 }

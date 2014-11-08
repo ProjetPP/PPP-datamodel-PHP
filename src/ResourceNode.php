@@ -8,7 +8,7 @@ namespace PPP\DataModel;
  * @licence MIT
  * @author Thomas Pellissier Tanon
  */
-class ResourceNode extends AbstractNode {
+abstract class ResourceNode extends AbstractNode {
 
 	/**
 	 * @var string
@@ -30,17 +30,14 @@ class ResourceNode extends AbstractNode {
 	}
 
 	/**
+	 * @return string
+	 */
+	public abstract function getValueType();
+
+	/**
 	 * @see AbstractNode::getType
 	 */
 	public function getType() {
 		return 'resource';
-	}
-
-	/**
-	 * @see AbstractNode::equals
-	 */
-	public function equals($target) {
-		return $target instanceof self &&
-			$this->value === $target->value;
 	}
 }

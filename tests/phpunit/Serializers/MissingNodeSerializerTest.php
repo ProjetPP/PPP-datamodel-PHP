@@ -3,7 +3,7 @@
 namespace PPP\DataModel\Serializers;
 
 use PPP\DataModel\MissingNode;
-use PPP\DataModel\ResourceNode;
+use PPP\DataModel\StringResourceNode;
 
 /**
  * @covers PPP\DataModel\Serializers\MissingNodeSerializer
@@ -34,7 +34,7 @@ class MissingNodeSerializerTest extends SerializerBaseTest {
 				array()
 			),
 			array(
-				new ResourceNode( 'a' )
+				new StringResourceNode( 'a' )
 			),
 		);
 	}
