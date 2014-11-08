@@ -3,21 +3,21 @@
 namespace PPP\DataModel\Deserializers;
 
 use PPP\DataModel\ResourceNode;
-use PPP\DataModel\StringResourceNode;
+use PPP\DataModel\TimeResourceNode;
 
 /**
- * @covers PPP\DataModel\Deserializers\StringResourceNodeDeserializer
+ * @covers PPP\DataModel\Deserializers\TimeResourceNodeDeserializer
  *
  * @licence MIT
  * @author Thomas Pellissier Tanon
  */
-class StringResourceNodeDeserializerTest extends DeserializerBaseTest {
+class TimeResourceNodeDeserializerTest extends DeserializerBaseTest {
 
 	/**
 	 * @see DeserializerBaseTest::buildDeserializer
 	 */
 	public function buildDeserializer() {
-		return new StringResourceNodeDeserializer();
+		return new TimeResourceNodeDeserializer();
 	}
 
 	/**
@@ -28,12 +28,8 @@ class StringResourceNodeDeserializerTest extends DeserializerBaseTest {
 			array(
 				array(
 					'type' => 'resource',
-					'value' => 'foo'
-				),
-				array(
-					'type' => 'resource',
-					'value-type' => 'string',
-					'value' => 'foo'
+					'value-type' => 'time',
+					'value' => '1111-11-11'
 				)
 			)
 		);
@@ -68,20 +64,20 @@ class StringResourceNodeDeserializerTest extends DeserializerBaseTest {
 	public function deserializationProvider() {
 		return array(
 			array(
-				new StringResourceNode('foo'),
+				new TimeResourceNode('1111-11-11'),
 				array(
 					'type' => 'resource',
-					'value-type' => 'string',
-					'value' => 'foo'
+					'value-type' => 'time',
+					'value' => '1111-11-11'
 				)
 			),
 			array(
-				new StringResourceNode('foo', 'en'),
+				new TimeResourceNode('1111-11-11', 'julian'),
 				array(
 					'type' => 'resource',
-					'value-type' => 'string',
-					'value' => 'foo',
-					'language' => 'en'
+					'value-type' => 'time',
+					'value' => '1111-11-11',
+					'calendar' => 'julian'
 				)
 			)
 		);
