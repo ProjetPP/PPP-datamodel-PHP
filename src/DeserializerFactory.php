@@ -22,20 +22,27 @@ class DeserializerFactory {
 	 */
 	private $nodeDeserializer = null;
 
-	public function __construct() {
-		$this->nodeDeserializer = $this->buildNodeDeserializer();
+	/**
+	 * @param Deserializer[] $customNodesDeserializers
+	 */
+	public function __construct(array $customNodesDeserializers = array()) {
+		$this->nodeDeserializer = $this->buildNodeDeserializer($customNodesDeserializers);
 	}
 
-	private function buildNodeDeserializer() {
-		return new DispatchingDeserializer(array(
-			new MissingNodeDeserializer(),
-			new TripleNodeDeserializer($this),
-			new SentenceNodeDeserializer(),
-			new BooleanResourceNodeDeserializer(),
-			new StringResourceNodeDeserializer(),
-			new TimeResourceNodeDeserializer()
-
-		));
+	private function buildNodeDeserializer(array $customNodesDeserializers) {
+		return new DispatchingDeserializer(
+			array_merge(
+				$customNodesDeserializers,
+				array(
+					new MissingNodeDeserializer(),
+					new TripleNodeDeserializer($this),
+					new SentenceNodeDeserializer(),
+					new BooleanResourceNodeDeserializer(),
+					new StringResourceNodeDeserializer(),
+					new TimeResourceNodeDeserializer()
+				)
+			)
+		);
 	}
 
 	/**

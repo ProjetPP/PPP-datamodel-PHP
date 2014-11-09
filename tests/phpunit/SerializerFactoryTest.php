@@ -1,6 +1,7 @@
 <?php
 
 namespace PPP\DataModel;
+use PPP\DataModel\Serializers\BasicResourceNodeSerializer;
 
 /**
  * @covers PPP\DataModel\SerializerFactory
@@ -11,7 +12,7 @@ namespace PPP\DataModel;
 class SerializerFactoryTest extends \PHPUnit_Framework_TestCase {
 
 	public function testNewNodeSerializer() {
-		$factory = new SerializerFactory();
+		$factory = new SerializerFactory(array(new BasicResourceNodeSerializer('test')));
 		$this->assertEquals(
 			array(
 				'type' => 'triple',

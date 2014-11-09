@@ -1,6 +1,7 @@
 <?php
 
 namespace PPP\DataModel;
+use PPP\DataModel\Deserializers\BooleanResourceNodeDeserializer;
 
 /**
  * @covers PPP\DataModel\DeserializerFactory
@@ -11,7 +12,7 @@ namespace PPP\DataModel;
 class DeserializerFactoryTest extends \PHPUnit_Framework_TestCase {
 
 	public function testNewNodeDeserializer() {
-		$factory = new DeserializerFactory();
+		$factory = new DeserializerFactory(array(new BooleanResourceNodeDeserializer()));
 		$this->assertEquals(
 			new TripleNode(new StringResourceNode('s'), new SentenceNode('p'), new MissingNode()),
 			$factory->newNodeDeserializer()->deserialize(array(
