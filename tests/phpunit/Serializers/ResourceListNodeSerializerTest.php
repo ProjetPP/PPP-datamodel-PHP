@@ -3,22 +3,22 @@
 namespace PPP\DataModel\Serializers;
 
 use PPP\DataModel\MissingNode;
-use PPP\DataModel\SerializerFactory;
-use PPP\DataModel\TripleNode;
+use PPP\DataModel\ResourceListNode;
+use PPP\DataModel\StringResourceNode;
 
 /**
- * @covers PPP\DataModel\Serializers\TripleNodeSerializer
+ * @covers PPP\DataModel\Serializers\ResourceListNodeSerializer
  *
  * @licence MIT
  * @author Thomas Pellissier Tanon
  */
-class TripleNodeSerializerTest extends SerializerBaseTest {
+class ResourceListNodeSerializerTest extends SerializerBaseTest {
 
 	/**
 	 * @see SerializerBaseTest::buildSerializer
 	 */
 	public function buildSerializer() {
-		return new TripleNodeSerializer(new SerializerFactory());
+		return new ResourceListNodeSerializer(new StringResourceNodeSerializer());
 	}
 
 	/**
@@ -27,7 +27,7 @@ class TripleNodeSerializerTest extends SerializerBaseTest {
 	public function serializableProvider() {
 		return array(
 			array(
-				new TripleNode(new MissingNode(), new MissingNode(), new MissingNode())
+				new ResourceListNode()
 			)
 		);
 	}
@@ -42,6 +42,9 @@ class TripleNodeSerializerTest extends SerializerBaseTest {
 			),
 			array(
 				new MissingNode()
+			),
+			array(
+				new StringResourceNode('true')
 			)
 		);
 	}
@@ -53,17 +56,17 @@ class TripleNodeSerializerTest extends SerializerBaseTest {
 		return array(
 			array(
 				array(
-					'type' => 'triple',
-					'subject' => array('type' => 'missing'),
-					'predicate' => array('type' => 'missing'),
-					'object' => array('type' => 'missing')
+					'type' => 'list',
+					'list' => array(
+						array(
+							'type' => 'resource',
+							'value-type' => 'string',
+							'value' => 'foo'
+						)
+					)
 				),
-				new TripleNode(
-					new MissingNode(),
-					new MissingNode(),
-					new MissingNode()
-				)
-			)
+				new ResourceListNode(array(new StringResourceNode('foo')))
+			),
 		);
 	}
 }

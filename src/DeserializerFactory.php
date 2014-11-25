@@ -6,6 +6,7 @@ use Deserializers\Deserializer;
 use Deserializers\DispatchingDeserializer;
 use PPP\DataModel\Deserializers\BooleanResourceNodeDeserializer;
 use PPP\DataModel\Deserializers\MissingNodeDeserializer;
+use PPP\DataModel\Deserializers\ResourceListNodeDeserializer;
 use PPP\DataModel\Deserializers\SentenceNodeDeserializer;
 use PPP\DataModel\Deserializers\StringResourceNodeDeserializer;
 use PPP\DataModel\Deserializers\TimeResourceNodeDeserializer;
@@ -30,13 +31,21 @@ class DeserializerFactory {
 	}
 
 	private function buildNodeDeserializer(array $customNodesDeserializers) {
+		$resourceNodeDeserializer = $this->buildResourceNodeDeserializer($customNodesDeserializers);
+		return new DispatchingDeserializer(array(
+			new MissingNodeDeserializer(),
+			new TripleNodeDeserializer($this),
+			new SentenceNodeDeserializer(),
+			new ResourceListNodeDeserializer($resourceNodeDeserializer),
+			$resourceNodeDeserializer
+		));
+	}
+
+	private function buildResourceNodeDeserializer(array $customNodesDeserializers) {
 		return new DispatchingDeserializer(
 			array_merge(
 				$customNodesDeserializers,
 				array(
-					new MissingNodeDeserializer(),
-					new TripleNodeDeserializer($this),
-					new SentenceNodeDeserializer(),
 					new BooleanResourceNodeDeserializer(),
 					new StringResourceNodeDeserializer(),
 					new TimeResourceNodeDeserializer()
