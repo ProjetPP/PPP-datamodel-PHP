@@ -11,6 +11,7 @@ use PPP\DataModel\Deserializers\SentenceNodeDeserializer;
 use PPP\DataModel\Deserializers\StringResourceNodeDeserializer;
 use PPP\DataModel\Deserializers\TimeResourceNodeDeserializer;
 use PPP\DataModel\Deserializers\TripleNodeDeserializer;
+use PPP\DataModel\Deserializers\UnionNodeDeserializer;
 
 /**
  * @licence MIT
@@ -35,6 +36,7 @@ class DeserializerFactory {
 		return new DispatchingDeserializer(array(
 			new MissingNodeDeserializer(),
 			new TripleNodeDeserializer($this),
+			new UnionNodeDeserializer($this),
 			new SentenceNodeDeserializer(),
 			new ResourceListNodeDeserializer($resourceNodeDeserializer),
 			$resourceNodeDeserializer
