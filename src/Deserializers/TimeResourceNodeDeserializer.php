@@ -14,9 +14,6 @@ class TimeResourceNodeDeserializer extends AbstractResourceNodeDeserializer {
 		parent::__construct('time');
 	}
 
-	/**
-	 * @see DispatchableDeserializer::getDeserialization
-	 */
 	protected function getDeserialization($value, array $serialization) {
 		$calendar = array_key_exists('calendar', $serialization) ? $serialization['calendar'] : 'gregorian';
 

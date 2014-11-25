@@ -14,9 +14,6 @@ class BooleanResourceNodeDeserializer extends AbstractResourceNodeDeserializer {
 		parent::__construct('boolean');
 	}
 
-	/**
-	 * @see DispatchableDeserializer::getDeserialization
-	 */
 	protected function getDeserialization($value, array $serialization) {
 		return new BooleanResourceNode($value);
 	}
