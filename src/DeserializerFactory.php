@@ -5,6 +5,7 @@ namespace PPP\DataModel;
 use Deserializers\Deserializer;
 use Deserializers\DispatchingDeserializer;
 use PPP\DataModel\Deserializers\BooleanResourceNodeDeserializer;
+use PPP\DataModel\Deserializers\IntersectionNodeDeserializer;
 use PPP\DataModel\Deserializers\MissingNodeDeserializer;
 use PPP\DataModel\Deserializers\ResourceListNodeDeserializer;
 use PPP\DataModel\Deserializers\SentenceNodeDeserializer;
@@ -37,6 +38,7 @@ class DeserializerFactory {
 			new MissingNodeDeserializer(),
 			new TripleNodeDeserializer($this),
 			new UnionNodeDeserializer($this),
+			new IntersectionNodeDeserializer($this),
 			new SentenceNodeDeserializer(),
 			new ResourceListNodeDeserializer($resourceNodeDeserializer),
 			$resourceNodeDeserializer
