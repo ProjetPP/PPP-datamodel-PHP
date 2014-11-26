@@ -7,7 +7,7 @@ use PPP\DataModel\MissingNode;
 use PPP\DataModel\UnionNode;
 
 /**
- * @covers PPP\DataModel\Deserializers\UnionNodeNodeDeserializer
+ * @covers PPP\DataModel\Deserializers\UnionNodeDeserializer
  *
  * @licence MIT
  * @author Thomas Pellissier Tanon

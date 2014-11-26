@@ -7,7 +7,7 @@ use PPP\DataModel\MissingNode;
 use PPP\DataModel\IntersectionNode;
 
 /**
- * @covers PPP\DataModel\Deserializers\IntersectionNodeNodeDeserializer
+ * @covers PPP\DataModel\Deserializers\IntersectionNodeDeserializer
  *
  * @licence MIT
  * @author Thomas Pellissier Tanon
