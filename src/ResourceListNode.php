@@ -4,6 +4,7 @@ namespace PPP\DataModel;
 
 use ArrayIterator;
 use Countable;
+use InvalidArgumentException;
 use IteratorAggregate;
 
 /**
@@ -17,13 +18,33 @@ class ResourceListNode extends AbstractNode implements IteratorAggregate, Counta
 	/**
 	 * @var ResourceNode[]
 	 */
-	private $resources;
+	private $resources = array();
 
 	/**
-	 * @param ResourceNode[] $resources
+	 * @param (ResourceNode|ResourceListNode)[] $resources
 	 */
 	public function __construct(array $resources = array()) {
-		$this->resources = $resources;
+		foreach($resources as $param) {
+			if($param instanceof ResourceNode) {
+				$this->appendResource($param);
+			} else if($param instanceof ResourceListNode) {
+				$this->appendResourceList($param);
+			} else {
+				throw new InvalidArgumentException('A ResourceListNode can only be build from ResourceNode and ResourceListNode');
+			}
+		}
+	}
+
+	private function appendResource(ResourceNode $resource) {
+		if(!$this->hasResource($resource)) {
+			$this->resources[] = $resource;
+		}
+	}
+
+	private function appendResourceList(ResourceListNode $resourceList) {
+		foreach($resourceList as $resource) {
+			$this->appendResource($resource);
+		}
 	}
 
 	/**
@@ -55,8 +76,9 @@ class ResourceListNode extends AbstractNode implements IteratorAggregate, Counta
 			return false;
 		}
 
-		foreach($this->resources as $resource) {
-			if(!$target->hasResource($resource)) {
+		$length = count($this->resources);
+		for($i = 0; $i < $length; $i++) {
+			if(!$target->resources[$i]->equals($this->resources[$i])) {
 				return false;
 			}
 		}

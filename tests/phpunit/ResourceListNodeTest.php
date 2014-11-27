@@ -27,7 +27,7 @@ class ResourceListNodeTest extends \PHPUnit_Framework_TestCase {
 
 	public function testEquals() {
 		$node = new ResourceListNode(array(new StringResourceNode('foo'), new StringResourceNode('bar')));
-		$this->assertTrue($node->equals(new ResourceListNode(array(new StringResourceNode('bar'), new StringResourceNode('foo')))));
+		$this->assertTrue($node->equals(new ResourceListNode(array(new StringResourceNode('foo'), new StringResourceNode('bar')))));
 	}
 
 	/**
@@ -51,6 +51,10 @@ class ResourceListNodeTest extends \PHPUnit_Framework_TestCase {
 				new ResourceListNode(array(new StringResourceNode('foo'), new StringResourceNode('bar'))),
 				new ResourceListNode(array(new StringResourceNode('foo')), new StringResourceNode('bar2')),
 			),
+			array(
+				new ResourceListNode(array(new StringResourceNode('foo'), new StringResourceNode('bar'))),
+				new ResourceListNode(array(new StringResourceNode('bar')), new StringResourceNode('foo')),
+			),
 		);
 	}
 
@@ -64,5 +68,22 @@ class ResourceListNodeTest extends \PHPUnit_Framework_TestCase {
 		foreach($listNode as $resource) {
 			$this->assertEquals(new StringResourceNode('foo'), $resource);
 		}
+	}
+
+	public function testBuildFilterDuplicates() {
+		$listNode = new ResourceListNode(array(
+			new StringResourceNode('foo'),
+			new StringResourceNode('bar'),
+			new StringResourceNode('foo')
+		));
+		$this->assertEquals(2, $listNode->count());
+	}
+
+	public function testBuildWithResourceList() {
+		$listNode = new ResourceListNode(array(
+			new StringResourceNode('foo'),
+			new ResourceListNode(array(new StringResourceNode('bar')))
+		));
+		$this->assertEquals(2, $listNode->count());
 	}
 }
