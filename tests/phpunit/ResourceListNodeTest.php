@@ -65,4 +65,13 @@ class ResourceListNodeTest extends \PHPUnit_Framework_TestCase {
 			$this->assertEquals(new StringResourceNode('foo'), $resource);
 		}
 	}
+
+	public function testFilterDuplicates() {
+		$listNode = new ResourceListNode(array(
+			new StringResourceNode('foo'),
+			new StringResourceNode('bar'),
+			new StringResourceNode('foo')
+		));
+		$this->assertEquals(2, $listNode->count());
+	}
 }

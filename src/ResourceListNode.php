@@ -17,13 +17,21 @@ class ResourceListNode extends AbstractNode implements IteratorAggregate, Counta
 	/**
 	 * @var ResourceNode[]
 	 */
-	private $resources;
+	private $resources = array();
 
 	/**
 	 * @param ResourceNode[] $resources
 	 */
 	public function __construct(array $resources = array()) {
-		$this->resources = $resources;
+		foreach($resources as $resource) {
+			$this->appendResource($resource);
+		}
+	}
+
+	private function appendResource(ResourceNode $resource) {
+		if(!$this->hasResource($resource)) {
+			$this->resources[] = $resource;
+		}
 	}
 
 	/**
