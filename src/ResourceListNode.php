@@ -4,6 +4,7 @@ namespace PPP\DataModel;
 
 use ArrayIterator;
 use Countable;
+use InvalidArgumentException;
 use IteratorAggregate;
 
 /**
@@ -20,17 +21,29 @@ class ResourceListNode extends AbstractNode implements IteratorAggregate, Counta
 	private $resources = array();
 
 	/**
-	 * @param ResourceNode[] $resources
+	 * @param (ResourceNode|ResourceListNode)[] $resources
 	 */
 	public function __construct(array $resources = array()) {
-		foreach($resources as $resource) {
-			$this->appendResource($resource);
+		foreach($resources as $param) {
+			if($param instanceof ResourceNode) {
+				$this->appendResource($param);
+			} else if($param instanceof ResourceListNode) {
+				$this->appendResourceList($param);
+			} else {
+				throw new InvalidArgumentException('A ResourceListNode can only be build from ResourceNode and ResourceListNode');
+			}
 		}
 	}
 
 	private function appendResource(ResourceNode $resource) {
 		if(!$this->hasResource($resource)) {
 			$this->resources[] = $resource;
+		}
+	}
+
+	private function appendResourceList(ResourceListNode $resourceList) {
+		foreach($resourceList as $resource) {
+			$this->appendResource($resource);
 		}
 	}
 
