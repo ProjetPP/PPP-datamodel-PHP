@@ -22,13 +22,18 @@ class SerializerFactoryTest extends \PHPUnit_Framework_TestCase {
 						array('type' => 'resource', 'value' => 's', 'value-type' => 'string')
 					)
 				),
-				'predicate' => array('type' => 'sentence', 'value' => 'p'),
+				'predicate' => array(
+					'type'=> 'union',
+					'list' => array(
+						array('type' => 'sentence', 'value' => 'p')
+					)
+				),
 				'object' => array('type' => 'missing')
 			),
 			$factory->newNodeSerializer()->serialize(
 				new TripleNode(
 					new ResourceListNode(array(new StringResourceNode('s'))),
-					new SentenceNode('p'),
+					new UnionNode(array(new SentenceNode('p'))),
 					new MissingNode()
 				)
 			)

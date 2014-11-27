@@ -16,13 +16,18 @@ class DeserializerFactoryTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals(
 			new TripleNode(
 				new StringResourceNode('s'),
-				new SentenceNode('p'),
+				new UnionNode(array(new SentenceNode('p'))),
 				new MissingNode()
 			),
 			$factory->newNodeDeserializer()->deserialize(array(
 				'type' => 'triple',
 				'subject' => array('type' => 'resource', 'value' => 's'),
-				'predicate' => array('type' => 'sentence', 'value' => 'p'),
+				'predicate' => array(
+					'type'=> 'union',
+					'list' => array(
+						array('type' => 'sentence', 'value' => 'p')
+					)
+				),
 				'object' => array('type' => 'missing')
 			))
 		);

@@ -14,9 +14,6 @@ class StringResourceNodeDeserializer extends AbstractResourceNodeDeserializer {
 		parent::__construct('string');
 	}
 
-	/**
-	 * @see DispatchableDeserializer::getDeserialization
-	 */
 	protected function getDeserialization($value, array $serialization) {
 		$languageCode = array_key_exists('language', $serialization) ? $serialization['language'] : '';
 
