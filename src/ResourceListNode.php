@@ -63,8 +63,9 @@ class ResourceListNode extends AbstractNode implements IteratorAggregate, Counta
 			return false;
 		}
 
-		foreach($this->resources as $resource) {
-			if(!$target->hasResource($resource)) {
+		$length = count($this->resources);
+		for($i = 0; $i < $length; $i++) {
+			if(!$target->resources[$i]->equals($this->resources[$i])) {
 				return false;
 			}
 		}

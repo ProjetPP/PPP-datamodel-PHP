@@ -27,7 +27,7 @@ class ResourceListNodeTest extends \PHPUnit_Framework_TestCase {
 
 	public function testEquals() {
 		$node = new ResourceListNode(array(new StringResourceNode('foo'), new StringResourceNode('bar')));
-		$this->assertTrue($node->equals(new ResourceListNode(array(new StringResourceNode('bar'), new StringResourceNode('foo')))));
+		$this->assertTrue($node->equals(new ResourceListNode(array(new StringResourceNode('foo'), new StringResourceNode('bar')))));
 	}
 
 	/**
@@ -50,6 +50,10 @@ class ResourceListNodeTest extends \PHPUnit_Framework_TestCase {
 			array(
 				new ResourceListNode(array(new StringResourceNode('foo'), new StringResourceNode('bar'))),
 				new ResourceListNode(array(new StringResourceNode('foo')), new StringResourceNode('bar2')),
+			),
+			array(
+				new ResourceListNode(array(new StringResourceNode('foo'), new StringResourceNode('bar'))),
+				new ResourceListNode(array(new StringResourceNode('bar')), new StringResourceNode('foo')),
 			),
 		);
 	}
