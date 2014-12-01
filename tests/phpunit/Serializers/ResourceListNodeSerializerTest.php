@@ -62,8 +62,24 @@ class ResourceListNodeSerializerTest extends SerializerBaseTest {
 							'type' => 'resource',
 							'value-type' => 'string',
 							'value' => 'foo'
+						),
+						array(
+							'type' => 'resource',
+							'value-type' => 'string',
+							'value' => 'bar'
 						)
 					)
+				),
+				new ResourceListNode(array(
+					new StringResourceNode('foo'),
+					new StringResourceNode('bar')
+				))
+			),
+			array(
+				array(
+					'type' => 'resource',
+					'value-type' => 'string',
+					'value' => 'foo'
 				),
 				new ResourceListNode(array(new StringResourceNode('foo')))
 			),

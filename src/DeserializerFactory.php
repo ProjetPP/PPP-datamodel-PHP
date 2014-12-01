@@ -7,6 +7,7 @@ use Deserializers\DispatchingDeserializer;
 use PPP\DataModel\Deserializers\BooleanResourceNodeDeserializer;
 use PPP\DataModel\Deserializers\IntersectionNodeDeserializer;
 use PPP\DataModel\Deserializers\MissingNodeDeserializer;
+use PPP\DataModel\Deserializers\ResourceAsResourceListNodeDeserializer;
 use PPP\DataModel\Deserializers\ResourceListNodeDeserializer;
 use PPP\DataModel\Deserializers\SentenceNodeDeserializer;
 use PPP\DataModel\Deserializers\StringResourceNodeDeserializer;
@@ -26,14 +27,14 @@ class DeserializerFactory {
 	private $nodeDeserializer = null;
 
 	/**
-	 * @param Deserializer[] $customNodesDeserializers
+	 * @param Deserializer[] $customResourceNodesDeserializers
 	 */
-	public function __construct(array $customNodesDeserializers = array()) {
-		$this->nodeDeserializer = $this->buildNodeDeserializer($customNodesDeserializers);
+	public function __construct(array $customResourceNodesDeserializers = array()) {
+		$this->nodeDeserializer = $this->buildNodeDeserializer($customResourceNodesDeserializers);
 	}
 
-	private function buildNodeDeserializer(array $customNodesDeserializers) {
-		$resourceNodeDeserializer = $this->buildResourceNodeDeserializer($customNodesDeserializers);
+	private function buildNodeDeserializer(array $customResourceNodesDeserializers) {
+		$resourceNodeDeserializer = $this->buildResourceNodeDeserializer($customResourceNodesDeserializers);
 		return new DispatchingDeserializer(array(
 			new MissingNodeDeserializer(),
 			new TripleNodeDeserializer($this),
@@ -41,14 +42,14 @@ class DeserializerFactory {
 			new IntersectionNodeDeserializer($this),
 			new SentenceNodeDeserializer(),
 			new ResourceListNodeDeserializer($resourceNodeDeserializer),
-			$resourceNodeDeserializer
+			new ResourceAsResourceListNodeDeserializer($resourceNodeDeserializer)
 		));
 	}
 
-	private function buildResourceNodeDeserializer(array $customNodesDeserializers) {
+	private function buildResourceNodeDeserializer(array $customResourceNodesDeserializers) {
 		return new DispatchingDeserializer(
 			array_merge(
-				$customNodesDeserializers,
+				$customResourceNodesDeserializers,
 				array(
 					new BooleanResourceNodeDeserializer(),
 					new StringResourceNodeDeserializer(),

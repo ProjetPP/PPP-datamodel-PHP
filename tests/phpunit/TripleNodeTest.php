@@ -11,28 +11,52 @@ namespace PPP\DataModel;
 class TripleNodeTest extends \PHPUnit_Framework_TestCase {
 
 	public function testGetSubject() {
-		$tripleNode = new TripleNode(new StringResourceNode('s'), new StringResourceNode('p'), new MissingNode());
-		$this->assertEquals(new StringResourceNode('s'), $tripleNode->getSubject());
+		$tripleNode = new TripleNode(
+			new ResourceListNode(array(new StringResourceNode('s'))),
+			new ResourceListNode(array(new StringResourceNode('p'))),
+			new MissingNode()
+		);
+		$this->assertEquals(new ResourceListNode(array(new StringResourceNode('s'))), $tripleNode->getSubject());
 	}
 
 	public function testGetPredicate() {
-		$tripleNode = new TripleNode(new StringResourceNode('s'), new StringResourceNode('p'), new MissingNode());
-		$this->assertEquals(new StringResourceNode('p'), $tripleNode->getPredicate());
+		$tripleNode = new TripleNode(
+			new ResourceListNode(array(new StringResourceNode('s'))),
+			new ResourceListNode(array(new StringResourceNode('p'))),
+			new MissingNode()
+		);
+		$this->assertEquals(new ResourceListNode(array(new StringResourceNode('p'))), $tripleNode->getPredicate());
 	}
 
 	public function testGetObject() {
-		$tripleNode = new TripleNode(new StringResourceNode('s'), new StringResourceNode('p'), new MissingNode());
+		$tripleNode = new TripleNode(
+			new ResourceListNode(array(new StringResourceNode('s'))),
+			new ResourceListNode(array(new StringResourceNode('p'))),
+			new MissingNode()
+		);
 		$this->assertEquals(new MissingNode(), $tripleNode->getObject());
 	}
 
 	public function testGetType() {
-		$tripleNode = new TripleNode(new StringResourceNode('s'), new StringResourceNode('p'), new MissingNode());
+		$tripleNode = new TripleNode(
+			new ResourceListNode(array(new StringResourceNode('s'))),
+			new ResourceListNode(array(new StringResourceNode('p'))),
+			new MissingNode()
+		);
 		$this->assertEquals('triple', $tripleNode->getType());
 	}
 
 	public function testEquals() {
-		$node = new TripleNode(new StringResourceNode('s'), new StringResourceNode('p'), new MissingNode());
-		$this->assertTrue($node->equals(new TripleNode(new StringResourceNode('s'), new StringResourceNode('p'), new MissingNode())));
+		$node = new TripleNode(
+			new ResourceListNode(array(new StringResourceNode('s'))),
+			new ResourceListNode(array(new StringResourceNode('p'))),
+			new MissingNode()
+		);
+		$this->assertTrue($node->equals(new TripleNode(
+			new ResourceListNode(array(new StringResourceNode('s'))),
+			new ResourceListNode(array(new StringResourceNode('p'))),
+			new MissingNode()
+		)));
 	}
 
 	/**
@@ -45,20 +69,36 @@ class TripleNodeTest extends \PHPUnit_Framework_TestCase {
 	public function nonEqualsProvider() {
 		return array(
 			array(
-				new TripleNode(new StringResourceNode('s'), new StringResourceNode('p'), new MissingNode()),
+				new TripleNode(
+					new ResourceListNode(array(new StringResourceNode('s'))),
+					new MissingNode(),
+					new MissingNode()
+				),
 				new MissingNode()
 			),
 			array(
-				new TripleNode(new StringResourceNode('t'), new StringResourceNode('p'), new MissingNode()),
-				new MissingNode()
+				new TripleNode(
+					new ResourceListNode(array(new StringResourceNode('s'))),
+					new MissingNode(),
+					new MissingNode()
+				),
+				new TripleNode(new MissingNode(), new MissingNode(), new MissingNode())
 			),
 			array(
-				new TripleNode(new StringResourceNode('s'), new StringResourceNode('t'), new MissingNode()),
-				new MissingNode()
+				new TripleNode(
+					new MissingNode(),
+					new ResourceListNode(array(new StringResourceNode('s'))),
+					new MissingNode()
+				),
+				new TripleNode(new MissingNode(), new MissingNode(), new MissingNode())
 			),
 			array(
-				new TripleNode(new StringResourceNode('s'), new StringResourceNode('p'), new StringResourceNode('u')),
-				new MissingNode()
+				new TripleNode(
+					new MissingNode(),
+					new MissingNode(),
+					new ResourceListNode(array(new StringResourceNode('s')))
+				),
+				new TripleNode(new MissingNode(), new MissingNode(), new MissingNode())
 			),
 		);
 	}

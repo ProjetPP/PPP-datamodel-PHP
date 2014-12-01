@@ -25,28 +25,27 @@ class SerializerFactory {
 	private $nodeSerializer = null;
 
 	/**
-	 * @param Serializer[] $customNodesSerializers
+	 * @param Serializer[] $customResourceNodesSerializers
 	 */
-	public function __construct(array $customNodesSerializers = array()) {
-		$this->nodeSerializer = $this->buildNodeSerializer($customNodesSerializers);
+	public function __construct(array $customResourceNodesSerializers = array()) {
+		$this->nodeSerializer = $this->buildNodeSerializer($customResourceNodesSerializers);
 	}
 
-	private function buildNodeSerializer(array $customNodesSerializers) {
-		$resourceNodeSerializer = $this->buildResourceNodeSerializer($customNodesSerializers);
+	private function buildNodeSerializer(array $customResourceNodesSerializers) {
+		$resourceNodeSerializer = $this->buildResourceNodeSerializer($customResourceNodesSerializers);
 		return new DispatchingSerializer(array(
 			new MissingNodeSerializer(),
 			new TripleNodeSerializer($this),
 			new OperatorNodeSerializer($this),
 			new SentenceNodeSerializer(),
-			new ResourceListNodeSerializer($resourceNodeSerializer),
-			$resourceNodeSerializer
+			new ResourceListNodeSerializer($resourceNodeSerializer)
 		));
 	}
 
-	private function buildResourceNodeSerializer(array $customNodesSerializers) {
+	private function buildResourceNodeSerializer(array $customResourceNodesSerializers) {
 		return new DispatchingSerializer(
 			array_merge(
-				$customNodesSerializers,
+				$customResourceNodesSerializers,
 				array(
 					new BasicResourceNodeSerializer('boolean'),
 					new StringResourceNodeSerializer(),

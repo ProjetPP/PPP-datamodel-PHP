@@ -44,6 +44,20 @@ class ResourceListNodeSerializer implements DispatchableSerializer {
 	}
 
 	private function getSerialization(ResourceListNode $node) {
+		if($node->count() === 1) {
+			return $this->serializeAsResource($node);
+		} else {
+			return $this->serializeAsList($node);
+		}
+	}
+
+	private function serializeAsResource(ResourceListNode $node) {
+		foreach($node as $resource) {
+			return $this->resourceSerializer->serialize($resource);
+		}
+	}
+
+	private function serializeAsList(ResourceListNode $node) {
 		$list = array();
 
 		foreach($node as $resource) {
