@@ -8,7 +8,7 @@ namespace PPP\DataModel;
  * @licence MIT
  * @author Thomas Pellissier Tanon
  */
-abstract class ResourceNode extends AbstractNode {
+abstract class ResourceNode {
 
 	/**
 	 * @var string
@@ -35,7 +35,7 @@ abstract class ResourceNode extends AbstractNode {
 	public abstract function getValueType();
 
 	/**
-	 * @see AbstractNode::getType
+	 * @return string
 	 */
 	public function getType() {
 		return 'resource';
