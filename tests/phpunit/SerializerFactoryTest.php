@@ -16,12 +16,7 @@ class SerializerFactoryTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals(
 			array(
 				'type' => 'triple',
-				'subject' => array(
-					'type' => 'list',
-					'list' => array(
-						array('type' => 'resource', 'value' => 's', 'value-type' => 'string')
-					)
-				),
+				'subject' => array('type' => 'resource', 'value' => 's', 'value-type' => 'string'),
 				'predicate' => array(
 					'type'=> 'union',
 					'list' => array(
