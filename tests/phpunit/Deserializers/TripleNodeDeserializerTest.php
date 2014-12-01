@@ -62,8 +62,8 @@ class TripleNodeDeserializerTest extends DeserializerBaseTest {
 			array(
 				new TripleNode(
 					new ResourceListNode(array(new StringResourceNode('s'))),
-					new StringResourceNode('p'),
-					new StringResourceNode('o')
+					new ResourceListNode(array(new StringResourceNode('p'))),
+					new ResourceListNode(array(new StringResourceNode('o')))
 				),
 				array(
 					'type' => 'triple',
