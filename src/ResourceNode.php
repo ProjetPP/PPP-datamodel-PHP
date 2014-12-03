@@ -40,4 +40,12 @@ abstract class ResourceNode {
 	public function getType() {
 		return 'resource';
 	}
+
+	/**
+	 * Returns if $target is equals to the current resource
+	 *
+	 * @param mixed $target
+	 * @return boolean
+	 */
+	public abstract function equals($target);
 }
