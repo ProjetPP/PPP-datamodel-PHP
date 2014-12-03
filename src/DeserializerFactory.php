@@ -5,6 +5,7 @@ namespace PPP\DataModel;
 use Deserializers\Deserializer;
 use Deserializers\DispatchingDeserializer;
 use PPP\DataModel\Deserializers\BooleanResourceNodeDeserializer;
+use PPP\DataModel\Deserializers\GeoJSonResourceNodeDeserializer;
 use PPP\DataModel\Deserializers\IntersectionNodeDeserializer;
 use PPP\DataModel\Deserializers\MissingNodeDeserializer;
 use PPP\DataModel\Deserializers\ResourceAsResourceListNodeDeserializer;
@@ -53,7 +54,8 @@ class DeserializerFactory {
 				array(
 					new BooleanResourceNodeDeserializer(),
 					new StringResourceNodeDeserializer(),
-					new TimeResourceNodeDeserializer()
+					new TimeResourceNodeDeserializer(),
+					new GeoJsonResourceNodeDeserializer()
 				)
 			)
 		);
