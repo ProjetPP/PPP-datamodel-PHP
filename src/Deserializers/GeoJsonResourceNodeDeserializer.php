@@ -11,7 +11,7 @@ use PPP\DataModel\GeoJSonResourceNode;
  * @licence MIT
  * @author Thomas Pellissier Tanon
  */
-class GeoJSonResourceNodeDeserializer extends AbstractResourceNodeDeserializer {
+class GeoJsonResourceNodeDeserializer extends AbstractResourceNodeDeserializer {
 
 	public function __construct() {
 		parent::__construct('geo-json');
