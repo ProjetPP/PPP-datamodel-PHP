@@ -8,6 +8,7 @@ use PPP\DataModel\Serializers\MissingNodeSerializer;
 use PPP\DataModel\Serializers\OperatorNodeSerializer;
 use PPP\DataModel\Serializers\ResourceListNodeSerializer;
 use PPP\DataModel\Serializers\SentenceNodeSerializer;
+use PPP\DataModel\Serializers\SortNodeSerializer;
 use PPP\DataModel\Serializers\StringResourceNodeSerializer;
 use PPP\DataModel\Serializers\TimeResourceNodeSerializer;
 use PPP\DataModel\Serializers\TripleNodeSerializer;
@@ -39,6 +40,7 @@ class SerializerFactory {
 			new TripleNodeSerializer($this),
 			new OperatorNodeSerializer($this),
 			new SentenceNodeSerializer(),
+			new SortNodeSerializer($this, $resourceNodeSerializer),
 			new ResourceListNodeSerializer($resourceNodeSerializer)
 		));
 	}

@@ -11,6 +11,7 @@ use PPP\DataModel\Deserializers\MissingNodeDeserializer;
 use PPP\DataModel\Deserializers\ResourceAsResourceListNodeDeserializer;
 use PPP\DataModel\Deserializers\ResourceListNodeDeserializer;
 use PPP\DataModel\Deserializers\SentenceNodeDeserializer;
+use PPP\DataModel\Deserializers\SortNodeDeserializer;
 use PPP\DataModel\Deserializers\StringResourceNodeDeserializer;
 use PPP\DataModel\Deserializers\TimeResourceNodeDeserializer;
 use PPP\DataModel\Deserializers\TripleNodeDeserializer;
@@ -42,6 +43,7 @@ class DeserializerFactory {
 			new UnionNodeDeserializer($this),
 			new IntersectionNodeDeserializer($this),
 			new SentenceNodeDeserializer(),
+			new SortNodeDeserializer($this, $resourceNodeDeserializer),
 			new ResourceListNodeDeserializer($resourceNodeDeserializer),
 			new ResourceAsResourceListNodeDeserializer($resourceNodeDeserializer)
 		));
