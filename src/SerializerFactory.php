@@ -6,6 +6,7 @@ use PPP\DataModel\Serializers\BasicResourceNodeSerializer;
 use PPP\DataModel\Serializers\GeoJsonResourceNodeSerializer;
 use PPP\DataModel\Serializers\MissingNodeSerializer;
 use PPP\DataModel\Serializers\OperatorNodeSerializer;
+use PPP\DataModel\Serializers\ReducerNodeSerializer;
 use PPP\DataModel\Serializers\ResourceListNodeSerializer;
 use PPP\DataModel\Serializers\SentenceNodeSerializer;
 use PPP\DataModel\Serializers\SortNodeSerializer;
@@ -39,6 +40,7 @@ class SerializerFactory {
 			new MissingNodeSerializer(),
 			new TripleNodeSerializer($this),
 			new OperatorNodeSerializer($this),
+			new ReducerNodeSerializer($this),
 			new SentenceNodeSerializer(),
 			new SortNodeSerializer($this, $resourceNodeSerializer),
 			new ResourceListNodeSerializer($resourceNodeSerializer)

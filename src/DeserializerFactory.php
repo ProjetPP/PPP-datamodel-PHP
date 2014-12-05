@@ -5,8 +5,10 @@ namespace PPP\DataModel;
 use Deserializers\Deserializer;
 use Deserializers\DispatchingDeserializer;
 use PPP\DataModel\Deserializers\BooleanResourceNodeDeserializer;
+use PPP\DataModel\Deserializers\FirstNodeDeserializer;
 use PPP\DataModel\Deserializers\GeoJsonResourceNodeDeserializer;
 use PPP\DataModel\Deserializers\IntersectionNodeDeserializer;
+use PPP\DataModel\Deserializers\LastNodeDeserializer;
 use PPP\DataModel\Deserializers\MissingNodeDeserializer;
 use PPP\DataModel\Deserializers\ResourceAsResourceListNodeDeserializer;
 use PPP\DataModel\Deserializers\ResourceListNodeDeserializer;
@@ -42,6 +44,8 @@ class DeserializerFactory {
 			new TripleNodeDeserializer($this),
 			new UnionNodeDeserializer($this),
 			new IntersectionNodeDeserializer($this),
+			new FirstNodeDeserializer($this),
+			new LastNodeDeserializer($this),
 			new SentenceNodeDeserializer(),
 			new SortNodeDeserializer($this, $resourceNodeDeserializer),
 			new ResourceListNodeDeserializer($resourceNodeDeserializer),
