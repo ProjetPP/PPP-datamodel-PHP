@@ -99,4 +99,11 @@ class ResourceListNode extends AbstractNode implements IteratorAggregate, Counta
 	public function count() {
 		return count($this->resources);
 	}
+
+	/**
+	 * @return bool
+	 */
+	public function isEmpty() {
+		return empty($this->resources);
+	}
 }

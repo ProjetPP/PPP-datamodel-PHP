@@ -20,6 +20,16 @@ class ResourceListNodeTest extends \PHPUnit_Framework_TestCase {
 		$this->assertFalse($listNode->hasResource(new StringResourceNode('foo')));
 	}
 
+	public function testIsEmptyReturnsTrue() {
+		$listNode = new ResourceListNode();
+		$this->assertTrue($listNode->isEmpty());
+	}
+
+	public function testIsEmptyReturnsFalse() {
+		$listNode = new ResourceListNode(array(new StringResourceNode('foo')));
+		$this->assertFalse($listNode->isEmpty());
+	}
+
 	public function testGetType() {
 		$listNode = new ResourceListNode();
 		$this->assertEquals('list', $listNode->getType());
