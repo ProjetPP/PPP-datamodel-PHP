@@ -62,6 +62,13 @@ class ResourceListNode extends AbstractNode implements IteratorAggregate, Counta
 	}
 
 	/**
+	 * @return ResourceNode[]
+	 */
+	public function toArray() {
+		return $this->resources;
+	}
+
+	/**
 	 * @see AbstractNode::getType
 	 */
 	public function getType() {
