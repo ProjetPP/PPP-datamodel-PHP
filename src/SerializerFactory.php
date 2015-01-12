@@ -4,6 +4,7 @@ namespace PPP\DataModel;
 
 use PPP\DataModel\Serializers\BasicResourceNodeSerializer;
 use PPP\DataModel\Serializers\GeoJsonResourceNodeSerializer;
+use PPP\DataModel\Serializers\JsonLdResourceNodeSerializer;
 use PPP\DataModel\Serializers\MissingNodeSerializer;
 use PPP\DataModel\Serializers\OperatorNodeSerializer;
 use PPP\DataModel\Serializers\ReducerNodeSerializer;
@@ -55,7 +56,8 @@ class SerializerFactory {
 					new BasicResourceNodeSerializer('boolean'),
 					new StringResourceNodeSerializer(),
 					new TimeResourceNodeSerializer(),
-					new GeoJsonResourceNodeSerializer()
+					new GeoJsonResourceNodeSerializer(),
+					new JsonLdResourceNodeSerializer()
 				)
 			)
 		);
