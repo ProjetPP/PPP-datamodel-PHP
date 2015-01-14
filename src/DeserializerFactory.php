@@ -62,7 +62,6 @@ class DeserializerFactory {
 					new BooleanResourceNodeDeserializer(),
 					new StringResourceNodeDeserializer(),
 					new TimeResourceNodeDeserializer(),
-					new GeoJsonResourceNodeDeserializer(),
 					new JsonLdResourceNodeDeserializer()
 				)
 			)

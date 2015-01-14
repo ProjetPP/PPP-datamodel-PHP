@@ -56,7 +56,6 @@ class SerializerFactory {
 					new BasicResourceNodeSerializer('boolean'),
 					new StringResourceNodeSerializer(),
 					new TimeResourceNodeSerializer(),
-					new GeoJsonResourceNodeSerializer(),
 					new JsonLdResourceNodeSerializer()
 				)
 			)
