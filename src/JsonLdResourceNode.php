@@ -48,7 +48,7 @@ class JsonLdResourceNode extends ResourceNode {
 	 */
 	public function equals($target) {
 		return $target instanceof self &&
-			count(array_intersect($this->getUris(), $target->getUris())) > 0;
+			(count(array_intersect($this->getUris(), $target->getUris())) > 0 || $this->graph == $target->graph);
 	}
 
 	private function getUris() {

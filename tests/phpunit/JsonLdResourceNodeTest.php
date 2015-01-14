@@ -58,6 +58,10 @@ class JsonLdResourceNodeTest extends \PHPUnit_Framework_TestCase {
 				new JsonLdResourceNode('Douglas Adams', (object) array('@context' => 'http://schema.org', 'sameAs' => array('foo', 'bar'))),
 				new JsonLdResourceNode('Douglas Adams', (object) array('@context' => 'http://schema.org', '@id' => 'foo'))
 			),
+			array(
+				new JsonLdResourceNode('Douglas Adams', (object) array('@context' => 'http://schema.org', 'name' => 'bar')),
+				new JsonLdResourceNode('Douglas Adams', (object) array('@context' => 'http://schema.org', 'name' => 'bar'))
+			)
 		);
 	}
 
@@ -75,13 +79,13 @@ class JsonLdResourceNodeTest extends \PHPUnit_Framework_TestCase {
 				new MissingNode()
 			),
 			array(
-				new JsonLdResourceNode('Douglas Adams', (object) array('http://schema.org/name' => 'Douglas Adams')),
-				new JsonLdResourceNode('Douglas Adams', (object) array('http://schema.org/name' => 'Douglas Adams'))
-			),
-			array(
 				new JsonLdResourceNode('Douglas Adams', (object) array('@context' => 'http://schema.org', '@id' => 'foo')),
 				new JsonLdResourceNode('Douglas Adams', (object) array('@context' => 'http://schema.org', '@id' => 'bar'))
 			),
+			array(
+				new JsonLdResourceNode('Douglas Adams', (object) array('@context' => 'http://schema.org', 'name' => 'bar')),
+				new JsonLdResourceNode('Douglas Adams', (object) array('@context' => 'http://schema.org'))
+			)
 		);
 	}
 }
