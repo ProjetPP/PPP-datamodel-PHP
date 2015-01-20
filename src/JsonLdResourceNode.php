@@ -9,8 +9,6 @@ use stdClass;
  *
  * @licence MIT
  * @author Thomas Pellissier Tanon
- *
- * TODO: do the compaction of the graph
  */
 class JsonLdResourceNode extends ResourceNode {
 
@@ -24,13 +22,14 @@ class JsonLdResourceNode extends ResourceNode {
 	 * @param stdClass $graph
 	 */
 	public function __construct($value, stdClass $graph) {
-		$this->graph = $graph;
+		$this->setJsonLdDocumentLoader();
+		$this->graph = jsonld_compact($graph, 'http://schema.org');
 
 		parent::__construct($value);
 	}
 
 	/**
-	 * @return stdClass
+	 * @return stdClass the compacted graph with as @context http://schema.org
 	 */
 	public function getGraph() {
 		return $this->graph;
@@ -72,5 +71,23 @@ class JsonLdResourceNode extends ResourceNode {
 		}
 
 		return $uris;
+	}
+
+	private function setJsonLdDocumentLoader() {
+		global $jsonld_default_load_document;
+
+		$jsonld_default_load_document = '\PPP\DataModel\JsonLdResourceNode::customContextLoader';
+	}
+
+	public static function customContextLoader($url) {
+		if($url !== 'http://schema.org') {
+			return jsonld_default_document_loader($url);
+		} else {
+			return (object) array(
+				'contextUrl' => null,
+				'document' => file_get_contents(__DIR__ . '/../data/schemaorg-context.jsonld'),
+				'documentUrl' => 'http://schema.org'
+			);
+		}
 	}
 }
