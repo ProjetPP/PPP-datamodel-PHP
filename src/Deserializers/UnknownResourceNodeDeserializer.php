@@ -9,27 +9,20 @@ use PPP\DataModel\UnknownResourceNode;
  * @licence MIT
  * @author Thomas Pellissier Tanon
  */
-class UnknownResourceNodeDeserializer extends AbstractResourceNodeDeserializer {
+class UnknownResourceNodeDeserializer extends TypedObjectDeserializer {
 
 	public function __construct() {
-		parent::__construct('unknown');
+		parent::__construct('resource', 'type');
 	}
 
 	/**
-	 * @see DispatchableDeserializer::isDeserializerFor
+	 * @see Deserializer::deserialize
 	 */
-	public function isDeserializerFor($serialization) {
-		return TypedObjectDeserializer::isDeserializerFor($serialization);
-	}
+	public function deserialize($serialization) {
+		$this->assertCanDeserialize($serialization);
+		$this->requireAttributes($serialization, 'value');
+		$this->assertAttributeInternalType($serialization, 'value', 'string');
 
-	/**
-	 * @see TypedObjectDeserializer::assertCanDeserialize
-	 */
-	protected function assertCanDeserialize($serialization) {
-		TypedObjectDeserializer::assertCanDeserialize($serialization);
-	}
-
-	protected function getDeserialization($value, array $serialization) {
-		return new UnknownResourceNode($value, $serialization);
+		return new UnknownResourceNode($serialization['value'], $serialization);
 	}
 }

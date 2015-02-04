@@ -13,28 +13,28 @@ class UnknownResourceNode extends ResourceNode {
 	/**
 	 * @var array
 	 */
-	private $additionalProperties;
+	private $properties;
 
 	/**
 	 * @param string $value
 	 * @param array $additionalProperties
 	 */
 	public function __construct($value, array $additionalProperties) {
-		$this->additionalProperties = $additionalProperties;
+		$this->properties = $additionalProperties;
 
 		parent::__construct($value);
 	}
 
-	public function getAdditionalProperties() {
-		return $this->additionalProperties;
+	public function getProperties() {
+		return $this->properties;
 	}
 
 	/**
 	 * @return string
 	 */
 	public function getValueType() {
-		return array_key_exists( 'value-type', $this->additionalProperties )
-			? $this->additionalProperties['value-type']
+		return array_key_exists( 'value-type', $this->properties )
+			? $this->properties['value-type']
 			: 'unknown';
 	}
 
@@ -42,6 +42,6 @@ class UnknownResourceNode extends ResourceNode {
 	 * @see AbstractNode::equals
 	 */
 	public function equals($target) {
-		return $target instanceof self && $this->additionalProperties == $target->additionalProperties;
+		return $target instanceof self && $this->properties == $target->properties;
 	}
 }

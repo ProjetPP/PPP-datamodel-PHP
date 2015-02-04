@@ -2,8 +2,8 @@
 
 namespace PPP\DataModel\Serializers;
 
-use PPP\DataModel\ResourceNode;
 use PPP\DataModel\UnknownResourceNode;
+use Serializers\Exceptions\UnsupportedObjectException;
 
 /**
  * @licence MIT
@@ -12,7 +12,7 @@ use PPP\DataModel\UnknownResourceNode;
 class UnknownResourceNodeSerializer extends BasicResourceNodeSerializer {
 
 	public function __construct() {
-		parent::__construct('unknown');
+		parent::__construct('resource', 'type');
 	}
 
 	/**
@@ -23,10 +23,14 @@ class UnknownResourceNodeSerializer extends BasicResourceNodeSerializer {
 	}
 
 	/**
-	 * @see AbstractResourceNodeSerializer::getAdditionalSerialization
-	 * @param UnknownResourceNode $node
+	 * @see Serializer::serialize
+	 * @param UnknownResourceNode $object
 	 */
-	protected function getAdditionalSerialization(ResourceNode $node) {
-		return $node->getAdditionalProperties();
+	public function serialize($object) {
+		if(!$this->isSerializerFor($object)) {
+			throw new UnsupportedObjectException($object, 'UnkownResourceNodeSerializer can only serialize UnknownResourceNode objects.');
+		}
+
+		return $object->getProperties();
 	}
 }

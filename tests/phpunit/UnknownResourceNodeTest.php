@@ -20,9 +20,9 @@ class UnknownResourceNodeTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals('dd', $node->getValueType());
 	}
 
-	public function testGetAdditionalProperties() {
+	public function testGetProperties() {
 		$node = new UnknownResourceNode('Douglas Adams', array('value-type' => 'dd'));
-		$this->assertEquals(array('value-type' => 'dd'), $node->getAdditionalProperties());
+		$this->assertEquals(array('value-type' => 'dd'), $node->getProperties());
 	}
 
 	public function testGetDefaultValueType() {

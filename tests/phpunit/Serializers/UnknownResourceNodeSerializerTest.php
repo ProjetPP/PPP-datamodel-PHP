@@ -61,7 +61,11 @@ class UnknownResourceNodeSerializerTest extends SerializerBaseTest {
 					'value' => 'Douglas Adams',
 					'value-type' => 'dd'
 				),
-				new UnknownResourceNode('Douglas Adams', array('value-type' => 'dd'))
+				new UnknownResourceNode('Douglas Adams', array(
+					'type' => 'resource',
+					'value' => 'Douglas Adams',
+					'value-type' => 'dd'
+				))
 			),
 		);
 	}
