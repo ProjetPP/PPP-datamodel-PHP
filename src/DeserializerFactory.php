@@ -6,7 +6,6 @@ use Deserializers\Deserializer;
 use Deserializers\DispatchingDeserializer;
 use PPP\DataModel\Deserializers\BooleanResourceNodeDeserializer;
 use PPP\DataModel\Deserializers\FirstNodeDeserializer;
-use PPP\DataModel\Deserializers\GeoJsonResourceNodeDeserializer;
 use PPP\DataModel\Deserializers\IntersectionNodeDeserializer;
 use PPP\DataModel\Deserializers\JsonLdResourceNodeDeserializer;
 use PPP\DataModel\Deserializers\LastNodeDeserializer;
@@ -19,6 +18,7 @@ use PPP\DataModel\Deserializers\StringResourceNodeDeserializer;
 use PPP\DataModel\Deserializers\TimeResourceNodeDeserializer;
 use PPP\DataModel\Deserializers\TripleNodeDeserializer;
 use PPP\DataModel\Deserializers\UnionNodeDeserializer;
+use PPP\DataModel\Deserializers\UnknownResourceNodeDeserializer;
 
 /**
  * @licence MIT
@@ -62,7 +62,8 @@ class DeserializerFactory {
 					new BooleanResourceNodeDeserializer(),
 					new StringResourceNodeDeserializer(),
 					new TimeResourceNodeDeserializer(),
-					new JsonLdResourceNodeDeserializer()
+					new JsonLdResourceNodeDeserializer(),
+					new UnknownResourceNodeDeserializer()
 				)
 			)
 		);
