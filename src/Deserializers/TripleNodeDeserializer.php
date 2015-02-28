@@ -5,6 +5,7 @@ namespace PPP\DataModel\Deserializers;
 use Deserializers\TypedObjectDeserializer;
 use PPP\DataModel\DeserializerFactory;
 use PPP\DataModel\TripleNode;
+use PPP\DataModel\UnionNode;
 
 /**
  * @licence MIT
@@ -39,10 +40,23 @@ class TripleNodeDeserializer extends TypedObjectDeserializer {
 		$this->requireAttributes($serialization, 'subject', 'predicate', 'object');
 
 		$nodeDeserializer = $this->deserializerFactory->newNodeDeserializer();
-		return new TripleNode(
+		$baseTriple = new TripleNode(
 			$nodeDeserializer->deserialize($serialization['subject']),
 			$nodeDeserializer->deserialize($serialization['predicate']),
 			$nodeDeserializer->deserialize($serialization['object'])
 		);
+
+		if(!array_key_exists('inverse-predicate', $serialization)) {
+			return $baseTriple;
+		}
+
+		return new UnionNode(array(
+			$baseTriple,
+			new TripleNode(
+				$baseTriple->getObject(),
+				$nodeDeserializer->deserialize($serialization['inverse-predicate']),
+				$baseTriple->getSubject()
+			)
+		));
 	}
 }
