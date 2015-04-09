@@ -18,10 +18,12 @@ class JsonLdResourceNodeTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testGetGraph() {
-		$node = new JsonLdResourceNode('Douglas Adams', (object) array('http://schema.org/name' => 'Douglas Adams'));
-		$this->assertEquals(((object) array('http://schema.org/name' => 'Douglas Adams')), $node->getGraph());
+		$node = new JsonLdResourceNode(
+			'Douglas Adams',
+			(object) array('http://schema.org/name' => (object) array('@value' => 'Douglas Adams'))
+		);
+		$this->assertEquals(((object) array('@context' => 'http://schema.org', 'name' => 'Douglas Adams')), $node->getGraph());
 	}
-
 
 	public function testGetValueType() {
 		$node = new JsonLdResourceNode('Douglas Adams', new stdClass());
@@ -51,12 +53,12 @@ class JsonLdResourceNodeTest extends \PHPUnit_Framework_TestCase {
 				new JsonLdResourceNode('Douglas Adams', (object) array('@context' => 'http://schema.org', 'sameAs' => array('foo', 'bar')))
 			),
 			array(
-				new JsonLdResourceNode('Douglas Adams', (object) array('@context' => 'http://schema.org', '@id' => 'foo')),
+				new JsonLdResourceNode('Douglas Adams', (object) array('@context' => 'http://schema.org', '@id' => 'foo', 'name' => 'bar')),
 				new JsonLdResourceNode('Douglas Adams', (object) array('@context' => 'http://schema.org', 'sameAs' => array('foo', 'bar')))
 			),
 			array(
 				new JsonLdResourceNode('Douglas Adams', (object) array('@context' => 'http://schema.org', 'sameAs' => array('foo', 'bar'))),
-				new JsonLdResourceNode('Douglas Adams', (object) array('@context' => 'http://schema.org', '@id' => 'foo'))
+				new JsonLdResourceNode('Douglas Adams', (object) array('@context' => 'http://schema.org', '@id' => 'foo', 'name' => 'bar'))
 			),
 			array(
 				new JsonLdResourceNode('Douglas Adams', (object) array('@context' => 'http://schema.org', 'name' => 'bar')),
@@ -79,8 +81,8 @@ class JsonLdResourceNodeTest extends \PHPUnit_Framework_TestCase {
 				new MissingNode()
 			),
 			array(
-				new JsonLdResourceNode('Douglas Adams', (object) array('@context' => 'http://schema.org', '@id' => 'foo')),
-				new JsonLdResourceNode('Douglas Adams', (object) array('@context' => 'http://schema.org', '@id' => 'bar'))
+				new JsonLdResourceNode('Douglas Adams', (object) array('@context' => 'http://schema.org', '@id' => 'foo', 'name' => 'bar')),
+				new JsonLdResourceNode('Douglas Adams', (object) array('@context' => 'http://schema.org', '@id' => 'bar', 'name' => 'bar'))
 			),
 			array(
 				new JsonLdResourceNode('Douglas Adams', (object) array('@context' => 'http://schema.org', 'name' => 'bar')),
