@@ -45,8 +45,8 @@ class JsonLdResourceNodeTest extends \PHPUnit_Framework_TestCase {
 	public function equalsProvider() {
 		return array(
 			array(
-				new JsonLdResourceNode('Douglas Adams', (object) array('@context' => 'http://schema.org', '@id' => 'foo')),
-				new JsonLdResourceNode('Douglas Adams', (object) array('@context' => 'http://schema.org', '@id' => 'foo'))
+				new JsonLdResourceNode('Douglas Adams', (object) array('@context' => 'http://schema.org', '@id' => 'foo', 'name' => 'baz')),
+				new JsonLdResourceNode('Douglas Adams', (object) array('@context' => 'http://schema.org', '@id' => 'foo', 'name' => 'bar'))
 			),
 			array(
 				new JsonLdResourceNode('Douglas Adams', (object) array('@context' => 'http://schema.org', 'sameAs' => 'foo')),
