@@ -63,6 +63,10 @@ class JsonLdResourceNodeTest extends \PHPUnit_Framework_TestCase {
 			array(
 				new JsonLdResourceNode('Douglas Adams', (object) array('@context' => 'http://schema.org', 'name' => 'bar')),
 				new JsonLdResourceNode('Douglas Adams', (object) array('@context' => 'http://schema.org', 'name' => 'bar'))
+			),
+			array(
+				new JsonLdResourceNode('Douglas Adams', (object) array('@context' => 'http://schema.org', 'parent' => (object) array('@id' => 'foo', 'name' => 'foo'))),
+				new JsonLdResourceNode('Douglas Adams', (object) array('@context' => 'http://schema.org', 'parent' => (object) array('@id' => 'foo')))
 			)
 		);
 	}

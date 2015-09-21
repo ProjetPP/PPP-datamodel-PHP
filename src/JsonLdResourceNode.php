@@ -46,19 +46,61 @@ class JsonLdResourceNode extends ResourceNode {
 	 * @see AbstractNode::equals
 	 */
 	public function equals($target) {
-		return $target instanceof self &&
-			(count(array_intersect($this->getUris(), $target->getUris())) > 0 || $this->graph == $target->graph);
+		return $target instanceof self && $this->resourceEquals($this->graph, $target->graph);
 	}
 
-	private function getUris() {
-		$uris = array();
+	private function nodeEquals($a, $b) {
+		if(is_array($a) && is_array($b)) {
+			return $this->arrayEquals($a, $b);
+		} elseif($a instanceof stdClass && $b instanceof stdClass) {
+			return $this->resourceEquals($a, $b);
+		} else {
+			return $a == $b;
+		}
+	}
 
-		if(property_exists($this->graph, '@id')) {
-			$uris[] = $this->graph->{'@id'};
+	private function arrayEquals(array $a, array $b) {
+		foreach($a as $aValue) {
+			if(!array_reduce($b, function($carry, $bValue) use ($aValue) {
+				return $carry || $this->nodeEquals($aValue, $bValue);
+			}, false)) {
+				return false;
+			}
 		}
 
-		if(property_exists($this->graph, 'sameAs')) {
-			$sameAs = $this->graph->sameAs;
+		return true;
+	}
+
+	private function resourceEquals(stdClass $a, stdClass $b) {
+		if(count(array_intersect($this->getUris($a), $this->getUris($b))) > 0) {
+			return true;
+		}
+
+		$aArray = get_object_vars($a);
+		$bArray = get_object_vars($b);
+
+		if(count($aArray) !== count($bArray)) {
+			return false;
+		}
+
+		foreach($aArray as $aProperty => $aValue) {
+			if(!array_key_exists($aProperty, $bArray) || !$this->nodeEquals($aValue, $bArray[$aProperty])) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	private function getUris(stdClass $resource) {
+		$uris = array();
+
+		if(property_exists($resource, '@id')) {
+			$uris[] = $resource->{'@id'};
+		}
+
+		if(property_exists($resource, 'sameAs')) {
+			$sameAs = $resource->sameAs;
 			if(!is_array($sameAs)) {
 				$sameAs = array($sameAs);
 			}
