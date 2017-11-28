@@ -7,7 +7,7 @@ use PPP\DataModel\SentenceNode;
 /**
  * @covers PPP\DataModel\Deserializers\SentenceNodeDeserializer
  *
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class SentenceNodeDeserializerTest extends DeserializerBaseTest {

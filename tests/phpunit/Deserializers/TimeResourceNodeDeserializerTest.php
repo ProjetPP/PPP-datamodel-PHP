@@ -7,7 +7,7 @@ use PPP\DataModel\TimeResourceNode;
 /**
  * @covers PPP\DataModel\Deserializers\TimeResourceNodeDeserializer
  *
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class TimeResourceNodeDeserializerTest extends DeserializerBaseTest {

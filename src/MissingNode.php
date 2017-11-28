@@ -5,7 +5,7 @@ namespace PPP\DataModel;
 /**
  * A missing node.
  *
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class MissingNode extends AbstractNode {

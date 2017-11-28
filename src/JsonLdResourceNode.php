@@ -7,7 +7,7 @@ use stdClass;
 /**
  * A JSON-LD resource node.
  *
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class JsonLdResourceNode extends ResourceNode {

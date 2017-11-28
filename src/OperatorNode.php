@@ -5,7 +5,7 @@ namespace PPP\DataModel;
 /**
  * An operator node.
  *
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 abstract class OperatorNode extends AbstractNode {

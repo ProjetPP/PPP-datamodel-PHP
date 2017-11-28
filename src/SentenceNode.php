@@ -5,7 +5,7 @@ namespace PPP\DataModel;
 /**
  * A sentence node.
  *
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class SentenceNode extends AbstractNode {

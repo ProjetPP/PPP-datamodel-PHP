@@ -3,7 +3,7 @@
 namespace PPP\DataModel;
 
 /**
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 abstract class OperatorNodeBaseTest extends \PHPUnit_Framework_TestCase {

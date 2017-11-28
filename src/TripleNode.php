@@ -4,7 +4,7 @@ namespace PPP\DataModel;
 /**
  * A (subject, predicate, object) triple.
  *
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class TripleNode extends AbstractNode {

@@ -10,7 +10,7 @@ use PPP\DataModel\UnionNode;
 /**
  * @covers PPP\DataModel\Serializers\OperatorNodeSerializer
  *
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class OperatorNodeSerializerTest extends SerializerBaseTest {

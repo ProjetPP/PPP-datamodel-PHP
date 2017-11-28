@@ -5,7 +5,7 @@ namespace PPP\DataModel;
 /**
  * @covers PPP\DataModel\MissingNode
  *
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class MissingNodeTest extends \PHPUnit_Framework_TestCase {

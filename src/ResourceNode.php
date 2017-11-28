@@ -5,7 +5,7 @@ namespace PPP\DataModel;
 /**
  * A resource node.
  *
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 abstract class ResourceNode {

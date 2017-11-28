@@ -8,7 +8,7 @@ use PPP\DataModel\SentenceNode;
 /**
  * @covers PPP\DataModel\Serializers\SentenceNodeSerializer
  *
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class SentenceNodeSerializerTest extends SerializerBaseTest {

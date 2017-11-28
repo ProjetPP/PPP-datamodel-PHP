@@ -6,7 +6,7 @@ use PPP\DataModel\DeserializerFactory;
 use PPP\DataModel\IntersectionNode;
 
 /**
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class IntersectionNodeDeserializer extends AbstractOperatorNodeDeserializer {

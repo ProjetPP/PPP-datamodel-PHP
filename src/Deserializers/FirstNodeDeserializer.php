@@ -7,7 +7,7 @@ use PPP\DataModel\DeserializerFactory;
 use PPP\DataModel\FirstNode;
 
 /**
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class FirstNodeDeserializer extends AbstractReducerNodeDeserializer {

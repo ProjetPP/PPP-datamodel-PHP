@@ -6,7 +6,7 @@ namespace PPP\DataModel;
 /**
  * A reducer node e.g. an operator list -> resource
  *
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 abstract class ReducerNode extends AbstractNode {

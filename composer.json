@@ -6,7 +6,7 @@
 		"ppp"
 	],
 	"homepage": "https://github.com/ProjetPP/PPP-datamodel-PHP",
-	"license": "MIT",
+	"license": "AGPL-3.0+",
 	"authors": [
 		{
 			"name": "Projet Pensées Profondes",

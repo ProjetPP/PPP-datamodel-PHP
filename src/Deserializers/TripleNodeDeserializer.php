@@ -8,7 +8,7 @@ use PPP\DataModel\TripleNode;
 use PPP\DataModel\UnionNode;
 
 /**
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class TripleNodeDeserializer extends TypedObjectDeserializer {

@@ -5,7 +5,7 @@ namespace PPP\DataModel;
 /**
  * @covers PPP\DataModel\BooleanResourceNode
  *
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class BooleanResourceNodeTest extends \PHPUnit_Framework_TestCase {

@@ -6,7 +6,7 @@ use Deserializers\TypedObjectDeserializer;
 use PPP\DataModel\SentenceNode;
 
 /**
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class SentenceNodeDeserializer extends TypedObjectDeserializer {

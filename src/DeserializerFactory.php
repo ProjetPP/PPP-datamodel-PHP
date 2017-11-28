@@ -21,7 +21,7 @@ use PPP\DataModel\Deserializers\UnionNodeDeserializer;
 use PPP\DataModel\Deserializers\UnknownResourceNodeDeserializer;
 
 /**
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class DeserializerFactory {

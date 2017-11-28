@@ -7,7 +7,7 @@ use PPP\DataModel\MissingNode;
 /**
  * @covers PPP\DataModel\Deserializers\MissingNodeDeserializer
  *
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class MissingNodeDeserializerTest extends DeserializerBaseTest {

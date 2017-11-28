@@ -5,7 +5,7 @@ namespace PPP\DataModel;
 /**
  * @covers PPP\DataModel\SortNode
  *
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class SortNodeTest extends \PHPUnit_Framework_TestCase {

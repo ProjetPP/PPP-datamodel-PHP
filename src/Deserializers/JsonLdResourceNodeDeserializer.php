@@ -5,7 +5,7 @@ namespace PPP\DataModel\Deserializers;
 use PPP\DataModel\JsonLdResourceNode;
 
 /**
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class JsonLdResourceNodeDeserializer extends AbstractResourceNodeDeserializer {

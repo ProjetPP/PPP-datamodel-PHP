@@ -7,7 +7,7 @@ use PPP\DataModel\JsonLdResourceNode;
 /**
  * @covers PPP\DataModel\Deserializers\JsonLdResourceNodeDeserializer
  *
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class JsonLdResourceNodeDeserializerTest extends DeserializerBaseTest {

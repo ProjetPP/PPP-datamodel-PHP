@@ -7,7 +7,7 @@ use PPP\DataModel\BooleanResourceNode;
 /**
  * @covers PPP\DataModel\Deserializers\BooleanResourceNodeDeserializer
  *
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class BooleanResourceNodeDeserializerTest extends DeserializerBaseTest {

@@ -5,7 +5,7 @@ namespace PPP\DataModel;
 /**
  * @covers PPP\DataModel\TimeResourceNode
  *
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class TimeResourceNodeTest extends \PHPUnit_Framework_TestCase {

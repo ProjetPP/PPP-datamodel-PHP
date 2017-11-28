@@ -9,7 +9,7 @@ use PPP\DataModel\UnionNode;
 /**
  * @covers PPP\DataModel\Deserializers\UnionNodeDeserializer
  *
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class UnionNodeNodeDeserializerTest extends DeserializerBaseTest {

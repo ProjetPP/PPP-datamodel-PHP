@@ -5,7 +5,7 @@ namespace PPP\DataModel;
 /**
  * Base class for all nodes.
  *
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 abstract class AbstractNode {

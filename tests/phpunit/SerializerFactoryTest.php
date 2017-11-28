@@ -6,7 +6,7 @@ use PPP\DataModel\Serializers\BasicResourceNodeSerializer;
 /**
  * @covers PPP\DataModel\SerializerFactory
  *
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class SerializerFactoryTest extends \PHPUnit_Framework_TestCase {

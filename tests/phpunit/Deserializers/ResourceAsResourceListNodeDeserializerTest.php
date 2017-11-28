@@ -8,7 +8,7 @@ use PPP\DataModel\StringResourceNode;
 /**
  * @covers PPP\DataModel\Deserializers\ResourceAsResourceListNodeDeserializer
  *
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class ResourceAsResourceListNodeDeserializerTest extends DeserializerBaseTest {

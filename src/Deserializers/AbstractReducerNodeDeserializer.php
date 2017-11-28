@@ -8,7 +8,7 @@ use PPP\DataModel\DeserializerFactory;
 use PPP\DataModel\ReducerNode;
 
 /**
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 abstract class AbstractReducerNodeDeserializer extends TypedObjectDeserializer {

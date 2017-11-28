@@ -7,7 +7,7 @@ use Deserializers\TypedObjectDeserializer;
 use PPP\DataModel\ResourceListNode;
 
 /**
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class ResourceListNodeDeserializer extends TypedObjectDeserializer {

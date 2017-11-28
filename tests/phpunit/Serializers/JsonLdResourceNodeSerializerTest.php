@@ -3,13 +3,13 @@
 namespace PPP\DataModel\Serializers;
 
 use PPP\DataModel\BooleanResourceNode;
-use PPP\DataModel\MissingNode;
 use PPP\DataModel\JsonLdResourceNode;
+use PPP\DataModel\MissingNode;
 
 /**
  * @covers PPP\DataModel\Serializers\JsonLdResourceNodeSerializer
  *
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class JsonLdResourceNodeSerializerTest extends SerializerBaseTest {

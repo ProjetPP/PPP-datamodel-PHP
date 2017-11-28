@@ -6,7 +6,7 @@ use Deserializers\TypedObjectDeserializer;
 use PPP\DataModel\MissingNode;
 
 /**
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class MissingNodeDeserializer extends TypedObjectDeserializer {

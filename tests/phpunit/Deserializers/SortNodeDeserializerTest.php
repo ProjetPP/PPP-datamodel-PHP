@@ -4,13 +4,13 @@ namespace PPP\DataModel\Deserializers;
 
 use PPP\DataModel\DeserializerFactory;
 use PPP\DataModel\ResourceListNode;
-use PPP\DataModel\StringResourceNode;
 use PPP\DataModel\SortNode;
+use PPP\DataModel\StringResourceNode;
 
 /**
  * @covers PPP\DataModel\Deserializers\SortNodeDeserializer
  *
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class SortNodeDeserializerTest extends DeserializerBaseTest {

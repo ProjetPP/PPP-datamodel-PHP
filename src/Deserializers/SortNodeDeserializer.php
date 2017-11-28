@@ -8,7 +8,7 @@ use PPP\DataModel\DeserializerFactory;
 use PPP\DataModel\SortNode;
 
 /**
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class SortNodeDeserializer extends TypedObjectDeserializer {

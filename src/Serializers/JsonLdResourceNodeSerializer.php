@@ -2,11 +2,11 @@
 
 namespace PPP\DataModel\Serializers;
 
-use PPP\DataModel\ResourceNode;
 use PPP\DataModel\JsonLdResourceNode;
+use PPP\DataModel\ResourceNode;
 
 /**
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class JsonLdResourceNodeSerializer extends BasicResourceNodeSerializer {

@@ -10,7 +10,7 @@ use IteratorAggregate;
 /**
  * A list of resources node.
  *
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class ResourceListNode extends AbstractNode implements IteratorAggregate, Countable {

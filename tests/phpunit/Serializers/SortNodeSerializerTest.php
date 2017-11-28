@@ -10,7 +10,7 @@ use PPP\DataModel\StringResourceNode;
 /**
  * @covers PPP\DataModel\Serializers\SortNodeSerializer
  *
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class SortNodeSerializerTest extends SerializerBaseTest {

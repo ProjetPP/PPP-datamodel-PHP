@@ -5,7 +5,7 @@ namespace PPP\DataModel;
 /**
  * @covers PPP\DataModel\SentenceNode
  *
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class SentenceNodeTest extends \PHPUnit_Framework_TestCase {

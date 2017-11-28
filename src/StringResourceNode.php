@@ -5,7 +5,7 @@ namespace PPP\DataModel;
 /**
  * A string resource node.
  *
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class StringResourceNode extends ResourceNode {

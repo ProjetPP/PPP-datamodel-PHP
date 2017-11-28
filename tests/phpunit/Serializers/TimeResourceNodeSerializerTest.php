@@ -9,7 +9,7 @@ use PPP\DataModel\TimeResourceNode;
 /**
  * @covers PPP\DataModel\Serializers\TimeResourceNodeSerializer
  *
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class TimeResourceNodeSerializerTest extends SerializerBaseTest {

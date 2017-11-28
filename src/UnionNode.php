@@ -5,7 +5,7 @@ namespace PPP\DataModel;
 /**
  * A union operator node.
  *
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class UnionNode extends OperatorNode {

@@ -7,7 +7,7 @@ use Serializers\DispatchableSerializer;
 use Serializers\Exceptions\UnsupportedObjectException;
 
 /**
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class MissingNodeSerializer implements DispatchableSerializer {

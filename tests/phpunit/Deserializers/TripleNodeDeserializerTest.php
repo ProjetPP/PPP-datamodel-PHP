@@ -11,7 +11,7 @@ use PPP\DataModel\UnionNode;
 /**
  * @covers PPP\DataModel\Deserializers\TripleNodeDeserializer
  *
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class TripleNodeDeserializerTest extends DeserializerBaseTest {

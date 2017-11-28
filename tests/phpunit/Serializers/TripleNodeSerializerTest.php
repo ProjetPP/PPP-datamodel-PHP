@@ -9,7 +9,7 @@ use PPP\DataModel\TripleNode;
 /**
  * @covers PPP\DataModel\Serializers\TripleNodeSerializer
  *
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class TripleNodeSerializerTest extends SerializerBaseTest {

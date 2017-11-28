@@ -6,7 +6,7 @@ use PPP\DataModel\Deserializers\BooleanResourceNodeDeserializer;
 /**
  * @covers PPP\DataModel\DeserializerFactory
  *
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class DeserializerFactoryTest extends \PHPUnit_Framework_TestCase {

@@ -5,7 +5,7 @@ namespace PPP\DataModel\Deserializers;
 use PPP\DataModel\TimeResourceNode;
 
 /**
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class TimeResourceNodeDeserializer extends AbstractResourceNodeDeserializer {

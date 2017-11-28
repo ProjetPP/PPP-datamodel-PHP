@@ -7,7 +7,7 @@ use stdClass;
 /**
  * @covers PPP\DataModel\JsonLdResourceNode
  *
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class JsonLdResourceNodeTest extends \PHPUnit_Framework_TestCase {

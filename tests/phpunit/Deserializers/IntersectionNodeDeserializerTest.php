@@ -3,13 +3,13 @@
 namespace PPP\DataModel\Deserializers;
 
 use PPP\DataModel\DeserializerFactory;
-use PPP\DataModel\MissingNode;
 use PPP\DataModel\IntersectionNode;
+use PPP\DataModel\MissingNode;
 
 /**
  * @covers PPP\DataModel\Deserializers\IntersectionNodeDeserializer
  *
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class IntersectionNodeNodeDeserializerTest extends DeserializerBaseTest {

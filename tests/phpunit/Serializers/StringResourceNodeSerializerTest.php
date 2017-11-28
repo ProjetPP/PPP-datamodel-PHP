@@ -9,7 +9,7 @@ use PPP\DataModel\StringResourceNode;
 /**
  * @covers PPP\DataModel\Serializers\StringResourceNodeSerializer
  *
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class StringResourceNodeSerializerTest extends SerializerBaseTest {

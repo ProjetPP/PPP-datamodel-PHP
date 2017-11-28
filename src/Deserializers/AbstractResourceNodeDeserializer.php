@@ -7,7 +7,7 @@ use Deserializers\TypedObjectDeserializer;
 use PPP\DataModel\ResourceNode;
 
 /**
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 abstract class AbstractResourceNodeDeserializer extends TypedObjectDeserializer {

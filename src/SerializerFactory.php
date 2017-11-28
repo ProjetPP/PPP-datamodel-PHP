@@ -18,7 +18,7 @@ use Serializers\DispatchingSerializer;
 use Serializers\Serializer;
 
 /**
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class SerializerFactory {

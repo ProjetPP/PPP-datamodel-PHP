@@ -6,7 +6,7 @@ use PPP\DataModel\ResourceNode;
 use PPP\DataModel\StringResourceNode;
 
 /**
- * @licence MIT
+ * @licence AGPLv3+
  * @author Thomas Pellissier Tanon
  */
 class StringResourceNodeSerializer extends BasicResourceNodeSerializer {
